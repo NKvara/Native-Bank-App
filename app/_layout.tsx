@@ -1,17 +1,32 @@
-import {useFonts} from "expo-font";
-import {Stack} from "expo-router";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import {useEffect} from "react";
-import "react-native-reanimated";
+import { useEffect } from "react";
+import { SessionProvider } from "../ctx/ctx";
 
 import "../global.css";
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+
+export {
+  // Catch any errors thrown by the Layout component.
+  ErrorBoundary,
+} from "expo-router";
+
+export const unstable_settings = {
+  initialRouteName: "login",
+};
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf")
+  const [loaded, error] = useFonts({
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    ...FontAwesome.font,
   });
+
+  useEffect(() => {
+    if (error) throw error;
+  }, [error]);
+
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -22,17 +37,14 @@ export default function RootLayout() {
     return null;
   }
 
+  return <RootLayoutNav />;
+}
+import { Slot } from "expo-router";
+
+function RootLayoutNav() {
   return (
-    <Stack>
-      <Stack.Screen
-        name="(auth)"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="(tabs)"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen name="+not-found" />
-    </Stack>
+    <SessionProvider>
+      <Slot />
+    </SessionProvider>
   );
 }

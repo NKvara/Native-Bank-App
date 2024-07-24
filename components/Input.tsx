@@ -1,5 +1,11 @@
 import {Ionicons} from "@expo/vector-icons";
-import {View, TextInput, KeyboardTypeOptions} from "react-native";
+import {
+  View,
+  TextInput,
+  KeyboardTypeOptions,
+  TextInputProps,
+  TouchableHighlight
+} from "react-native";
 
 type textContentType =
   | "none"
@@ -47,29 +53,57 @@ type textContentType =
 
 const Input = ({
   name,
+  placeholder,
   icon,
   type,
+  isPassword = false,
   keyboard,
-  value
+  value,
+  onChangeText,
+  onBlur,
+  props,
+  rightIcon
 }: {
-  name: string;
-  icon: keyof typeof Ionicons.glyphMap;
-  type: textContentType;
-  keyboard: KeyboardTypeOptions;
-  value: string;
+  name?: string;
+  placeholder?: string;
+  icon?: keyof typeof Ionicons.glyphMap;
+  type?: textContentType;
+  isPassword?: boolean;
+  keyboard?: KeyboardTypeOptions;
+  value?: string;
+  onChangeText?: (e: string) => void;
+  onBlur?: () => void;
+  props?: TextInputProps;
+  rightIcon?: {
+    icon: keyof typeof Ionicons.glyphMap;
+    onPress?: () => void;
+  };
 }) => {
   return (
-    <View className="flex-row items-center h-16 bg-zinc-100 w-full px-6 rounded-xl">
-      <Ionicons className="pr-4" name={icon} size={20} />
+    <View className="flex-row items-center h-16 bg-white w-full px-6 rounded-xl">
+      {icon && <Ionicons className="pr-4" name={icon} size={20} />}
       <TextInput
+        {...props}
+        id={name}
         className="placeholder:text-zinc-400 h-full flex-1"
-        placeholder={name}
+        placeholder={placeholder}
         textContentType={type}
         keyboardType={keyboard}
         textAlignVertical="center"
         autoCapitalize="none"
         value={value}
+        onChangeText={onChangeText}
+        onBlur={onBlur}
+        secureTextEntry={isPassword}
       />
+      {rightIcon && (
+        <TouchableHighlight
+          underlayColor="transparent"
+          onPress={rightIcon.onPress}
+        >
+          <Ionicons className="pl-4" name={rightIcon.icon} size={20} />
+        </TouchableHighlight>
+      )}
     </View>
   );
 };

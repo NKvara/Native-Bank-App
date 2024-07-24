@@ -1,11 +1,23 @@
-import {Stack} from "expo-router";
+import { Redirect, Stack } from 'expo-router';
 
-export default function TabLayout() {
+import { useSession } from '../../ctx/ctx';
+import { Text } from 'react-native';
+
+export default function AppLayout() {
+  const { session, isLoading } = useSession();
+  // You can keep the splash screen open, or render a loading screen like we do here.
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+  }
+
+  if (!session) {
+    return <Redirect href="/login" />;
+  }
+
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false
-      }}
-    ></Stack>
-  );
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+    </Stack>
+  )
 }
