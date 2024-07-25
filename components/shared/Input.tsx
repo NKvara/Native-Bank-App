@@ -1,4 +1,5 @@
 import {Ionicons} from "@expo/vector-icons";
+import {useColorScheme} from "nativewind";
 import {
   View,
   TextInput,
@@ -79,13 +80,16 @@ const Input = ({
     onPress?: () => void;
   };
 }) => {
+  const {colorScheme} = useColorScheme();
+
   return (
-    <View className="flex-row items-center h-16 bg-white w-full px-6 rounded-xl">
+    <View className="flex-row items-center h-16 bg-rebankBackground w-full px-6 rounded-xl">
       {icon && <Ionicons className="pr-4" name={icon} size={20} />}
       <TextInput
         {...props}
         id={name}
-        className="placeholder:text-zinc-400 h-full flex-1"
+        className="text-rebankPrimary h-full flex-1"
+        placeholderTextColor={colorScheme === "light" ? "#c4c4c4" : "#f3f3f3"}
         placeholder={placeholder}
         textContentType={type}
         keyboardType={keyboard}

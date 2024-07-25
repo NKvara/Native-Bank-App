@@ -14,7 +14,7 @@ const ReButton = ({
 }) => {
   return (
     <TouchableOpacity
-      className="flex justify-center items-center w-full h-14 rounded-xl bg-yellow-300 disabled:opacity-20 disabled:bg-purple-400"
+      className="flex justify-center items-center w-full h-14 rounded-xl bg-rebankYellow disabled:opacity-20 disabled:bg-rebankPurple"
       disabled={isLoading || isDisabled}
       onPress={onPress}
     >

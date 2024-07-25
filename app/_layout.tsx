@@ -1,18 +1,18 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useFonts } from "expo-font";
+import {useFonts} from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import { SessionProvider } from "../ctx/ctx";
+import {useEffect} from "react";
+import {SessionProvider} from "../ctx/ctx";
 
 import "../global.css";
 
 export {
   // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
+  ErrorBoundary
 } from "expo-router";
 
 export const unstable_settings = {
-  initialRouteName: "login",
+  initialRouteName: "login"
 };
 
 SplashScreen.preventAutoHideAsync();
@@ -20,7 +20,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    ...FontAwesome.font,
+    ...FontAwesome.font
   });
 
   useEffect(() => {
@@ -39,12 +39,15 @@ export default function RootLayout() {
 
   return <RootLayoutNav />;
 }
-import { Slot } from "expo-router";
+import {Slot} from "expo-router";
+import {ThemeProvider} from "@/components/ThemeProviders";
 
 function RootLayoutNav() {
   return (
     <SessionProvider>
-      <Slot />
+      <ThemeProvider>
+        <Slot />
+      </ThemeProvider>
     </SessionProvider>
   );
 }

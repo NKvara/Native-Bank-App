@@ -11,22 +11,22 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
-
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{tabBarActiveTintColor: "#f8ca41", headerShown: false}}
+    >
       <Tabs.Screen
-        name="index"
+        name="(dashboard)/index"
         options={{
-          title: "Tab One",
-          tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => <Link href="/modal" asChild></Link>
+          title: "Home",
+          tabBarIcon: ({color}) => <TabBarIcon name="home" color={color} />,
         }}
       />
       <Tabs.Screen
         name="two"
         options={{
           title: "Tab Two",
-          tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />
+          tabBarIcon: ({color}) => <TabBarIcon name="cog" color={color} />
         }}
       />
     </Tabs>
