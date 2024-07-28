@@ -1,20 +1,34 @@
-import {vars} from "nativewind";
+import {useColorScheme, vars} from "nativewind";
 
-export const themes = {
-  light: vars({
+export const colors = {
+  light: {
     "--color-rebankPrimary": "#000000",
     "--color-rebankYellow": "#f8ca41",
     "--color-rebankPurple": "#9481b4",
     "--color-rebankGrey": "#c4c4c4",
+    "--color-rebankDimGrey": "#e3e5e8",
     "--color-redError": "#E86B73",
-    "--color-rebankBackground": "#ffffff",
-  }),
-  dark: vars({
+    "--color-inputBackground": "#ffffff",
+    "--color-rebankBackground": "#F2F2F2"
+  },
+  dark: {
     "--color-rebankPrimary": "#ffffff",
     "--color-rebankYellow": "#f8ca41",
     "--color-rebankPurple": "#9481b4",
-    "--color-rebankGrey": "#f3f3f3",
+    "--color-rebankGrey": "#717379",
+    "--color-rebankDimGrey": "#32363E",
     "--color-redError": "#E86B73",
-    "--color-rebankBackground": "#000000"
-  })
+    "--color-inputBackground": "#000000",
+    "--color-rebankBackground": "#16181C"
+  }
+};
+
+export const colorPick = () => {
+  const {colorScheme} = useColorScheme();
+  return colors[colorScheme!];
+};
+
+export const themes = {
+  light: vars(colors.light),
+  dark: vars(colors.dark)
 };

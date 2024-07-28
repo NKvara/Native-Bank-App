@@ -7,6 +7,7 @@ import {
   TextInputProps,
   TouchableHighlight
 } from "react-native";
+import {colorPick} from '@/color-theme';
 
 type textContentType =
   | "none"
@@ -80,16 +81,16 @@ const Input = ({
     onPress?: () => void;
   };
 }) => {
-  const {colorScheme} = useColorScheme();
+  const color = colorPick();
 
   return (
-    <View className="flex-row items-center h-16 bg-rebankBackground w-full px-6 rounded-xl">
+    <View className="flex-row items-center h-16 bg-inputBackground w-full px-6 rounded-xl">
       {icon && <Ionicons className="pr-4" name={icon} size={20} />}
       <TextInput
         {...props}
         id={name}
         className="text-rebankPrimary h-full flex-1"
-        placeholderTextColor={colorScheme === "light" ? "#c4c4c4" : "#f3f3f3"}
+        placeholderTextColor={color["--color-rebankGrey"]}
         placeholder={placeholder}
         textContentType={type}
         keyboardType={keyboard}
