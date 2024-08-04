@@ -1,4 +1,4 @@
-import {View, Text} from "react-native";
+import {View} from "react-native";
 import React from "react";
 import Input from "@/components/shared/Input";
 import ReButton from "@/components/shared/ReButton";
@@ -17,6 +17,7 @@ const LoginBody = () => {
     },
     onSubmit(values) {
       signIn(values.username);
+      // @ts-ignore next line
       router.replace("/");
     }
   });

@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableHighlight} from "react-native";
+import {View, Image, TouchableHighlight} from "react-native";
 import React from "react";
 import {Ionicons} from "@expo/vector-icons";
 import ReText from "@/components/shared/ReText";

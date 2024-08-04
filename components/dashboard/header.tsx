@@ -1,4 +1,4 @@
-import {Image, Text, View} from "react-native";
+import {Image,  View} from "react-native";
 import React from "react";
 import {LinearGradient} from "expo-linear-gradient";
 import {useSession} from "@/ctx/ctx";

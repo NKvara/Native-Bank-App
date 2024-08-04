@@ -1,7 +1,6 @@
 import {View, Text, Dimensions} from "react-native";
 import React from "react";
 import Carousel from "react-native-reanimated-carousel";
-import ReText from "@/components/shared/ReText";
 
 const DashboardCards = () => {
   return (

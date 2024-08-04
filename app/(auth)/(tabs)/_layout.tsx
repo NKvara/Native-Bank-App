@@ -1,9 +1,8 @@
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import {Link, Tabs} from "expo-router";
-import {useColorScheme} from "nativewind";
-import {colors, colorPick} from "@/color-theme";
-import {Text, View} from "react-native";
+import {Tabs} from "expo-router";
+import {colorPick} from "@/color-theme";
+import {View} from "react-native";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -26,13 +25,13 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
-  const color = colorPick();
+  const colorPicker = colorPick();
 
   return (
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
-        tabBarActiveTintColor: color["--color-rebankYellow"],
+        tabBarActiveTintColor: colorPicker["--color-rebankYellow"],
         headerShown: false,
         tabBarStyle: {
           display: "flex",
@@ -44,7 +43,7 @@ export default function TabLayout() {
           borderTopWidth: 0,
           borderRadius: 32,
           height: 64,
-          backgroundColor: color["--color-inputBackground"]
+          backgroundColor: colorPicker["--color-inputBackground"]
         },
         tabBarItemStyle: {
           height: 64

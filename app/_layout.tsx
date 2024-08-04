@@ -5,6 +5,8 @@ import {useEffect} from "react";
 import {SessionProvider} from "../ctx/ctx";
 
 import "../global.css";
+import {Slot} from "expo-router";
+import {ThemeProvider} from "@/components/ThemeProviders";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -39,8 +41,6 @@ export default function RootLayout() {
 
   return <RootLayoutNav />;
 }
-import {Slot} from "expo-router";
-import {ThemeProvider} from "@/components/ThemeProviders";
 
 function RootLayoutNav() {
   return (

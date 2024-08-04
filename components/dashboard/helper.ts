@@ -1,4 +1,4 @@
-const cards = [
+export const cards = [
   {
     Image: "@/assets/images/dashboard/cards/1.png",
     Name: "Alfonso Lesch",

@@ -1,5 +1,4 @@
 import {Ionicons} from "@expo/vector-icons";
-import {useColorScheme} from "nativewind";
 import {
   View,
   TextInput,
