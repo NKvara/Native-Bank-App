@@ -1,25 +1,25 @@
-import {View} from "react-native";
-import React from "react";
-import Input from "@/components/shared/Input";
-import ReButton from "@/components/shared/ReButton";
-import {router} from "expo-router";
-import {useFormik} from "formik";
-import { useSession } from "@/ctx/ctx";
+import { View } from 'react-native';
+import React from 'react';
+import Input from '@/components/shared/Input';
+import ReButton from '@/components/shared/ReButton';
+import { router } from 'expo-router';
+import { useFormik } from 'formik';
+import { useSession } from '@/ctx/ctx';
 
 const LoginBody = () => {
-  const {signIn} = useSession();
+  const { signIn } = useSession();
 
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
-      passwordVisible: false
+      username: '',
+      password: '',
+      passwordVisible: false,
     },
     onSubmit(values) {
       signIn(values.username);
       // @ts-ignore next line
-      router.replace("/");
-    }
+      router.replace('/');
+    },
   });
 
   return (
@@ -31,10 +31,10 @@ const LoginBody = () => {
         keyboard="default"
         type="username"
         onChangeText={(e) => {
-          formik.setFieldValue("username", e);
+          formik.setFieldValue('username', e);
         }}
         onBlur={() => {
-          formik.handleBlur("username");
+          formik.handleBlur('username');
         }}
         value={formik.values.username}
       />
@@ -46,22 +46,17 @@ const LoginBody = () => {
         type="password"
         isPassword={!formik.values.passwordVisible}
         onChangeText={(e) => {
-          formik.setFieldValue("password", e);
+          formik.setFieldValue('password', e);
         }}
         onBlur={() => {
-          formik.handleBlur("password");
+          formik.handleBlur('password');
         }}
         value={formik.values.password}
         rightIcon={{
-          icon: formik.values.passwordVisible
-            ? "eye-off-outline"
-            : "eye-outline",
+          icon: formik.values.passwordVisible ? 'eye-off-outline' : 'eye-outline',
           onPress: () => {
-            formik.setFieldValue(
-              "passwordVisible",
-              !formik.values.passwordVisible
-            );
-          }
+            formik.setFieldValue('passwordVisible', !formik.values.passwordVisible);
+          },
         }}
       />
       <ReButton

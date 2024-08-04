@@ -1,55 +1,49 @@
-import {Ionicons} from "@expo/vector-icons";
-import {
-  View,
-  TextInput,
-  KeyboardTypeOptions,
-  TextInputProps,
-  TouchableHighlight
-} from "react-native";
-import {colorPick} from '@/color-theme';
+import { Ionicons } from '@expo/vector-icons';
+import { View, TextInput, KeyboardTypeOptions, TextInputProps, TouchableHighlight } from 'react-native';
+import { colorPick } from '@/color-theme';
 
 type textContentType =
-  | "none"
-  | "URL"
-  | "addressCity"
-  | "addressCityAndState"
-  | "addressState"
-  | "countryName"
-  | "creditCardNumber"
-  | "creditCardExpiration"
-  | "creditCardExpirationMonth"
-  | "creditCardExpirationYear"
-  | "creditCardSecurityCode"
-  | "creditCardType"
-  | "creditCardName"
-  | "creditCardGivenName"
-  | "creditCardMiddleName"
-  | "creditCardFamilyName"
-  | "emailAddress"
-  | "familyName"
-  | "fullStreetAddress"
-  | "givenName"
-  | "jobTitle"
-  | "location"
-  | "middleName"
-  | "name"
-  | "namePrefix"
-  | "nameSuffix"
-  | "nickname"
-  | "organizationName"
-  | "postalCode"
-  | "streetAddressLine1"
-  | "streetAddressLine2"
-  | "sublocality"
-  | "telephoneNumber"
-  | "username"
-  | "password"
-  | "newPassword"
-  | "oneTimeCode"
-  | "birthdate"
-  | "birthdateDay"
-  | "birthdateMonth"
-  | "birthdateYear"
+  | 'none'
+  | 'URL'
+  | 'addressCity'
+  | 'addressCityAndState'
+  | 'addressState'
+  | 'countryName'
+  | 'creditCardNumber'
+  | 'creditCardExpiration'
+  | 'creditCardExpirationMonth'
+  | 'creditCardExpirationYear'
+  | 'creditCardSecurityCode'
+  | 'creditCardType'
+  | 'creditCardName'
+  | 'creditCardGivenName'
+  | 'creditCardMiddleName'
+  | 'creditCardFamilyName'
+  | 'emailAddress'
+  | 'familyName'
+  | 'fullStreetAddress'
+  | 'givenName'
+  | 'jobTitle'
+  | 'location'
+  | 'middleName'
+  | 'name'
+  | 'namePrefix'
+  | 'nameSuffix'
+  | 'nickname'
+  | 'organizationName'
+  | 'postalCode'
+  | 'streetAddressLine1'
+  | 'streetAddressLine2'
+  | 'sublocality'
+  | 'telephoneNumber'
+  | 'username'
+  | 'password'
+  | 'newPassword'
+  | 'oneTimeCode'
+  | 'birthdate'
+  | 'birthdateDay'
+  | 'birthdateMonth'
+  | 'birthdateYear'
   | undefined;
 
 const Input = ({
@@ -63,7 +57,7 @@ const Input = ({
   onChangeText,
   onBlur,
   props,
-  rightIcon
+  rightIcon,
 }: {
   name?: string;
   placeholder?: string;
@@ -84,12 +78,18 @@ const Input = ({
 
   return (
     <View className="flex-row items-center h-16 bg-inputBackground w-full px-6 rounded-xl">
-      {icon && <Ionicons className="pr-4" name={icon} size={20} />}
+      {icon && (
+        <Ionicons
+          className="pr-4"
+          name={icon}
+          size={20}
+        />
+      )}
       <TextInput
         {...props}
         id={name}
         className="text-rebankPrimary h-full flex-1"
-        placeholderTextColor={color["--color-rebankGrey"]}
+        placeholderTextColor={color['--color-rebankGrey']}
         placeholder={placeholder}
         textContentType={type}
         keyboardType={keyboard}
@@ -105,7 +105,11 @@ const Input = ({
           underlayColor="transparent"
           onPress={rightIcon.onPress}
         >
-          <Ionicons className="pl-4" name={rightIcon.icon} size={20} />
+          <Ionicons
+            className="pl-4"
+            name={rightIcon.icon}
+            size={20}
+          />
         </TouchableHighlight>
       )}
     </View>

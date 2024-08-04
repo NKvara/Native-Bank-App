@@ -1,6 +1,6 @@
-import {View, Text, Dimensions} from "react-native";
-import React from "react";
-import Carousel from "react-native-reanimated-carousel";
+import { View, Text, Dimensions } from 'react-native';
+import React from 'react';
+import Carousel from 'react-native-reanimated-carousel';
 
 const DashboardCards = () => {
   return (
@@ -9,23 +9,23 @@ const DashboardCards = () => {
         <Carousel
           loop={false}
           mode="parallax"
-          width={Dimensions.get("window").width}
+          width={Dimensions.get('window').width}
           height={128}
           autoPlay={false}
           data={[...new Array(6).keys()]}
           scrollAnimationDuration={1000}
-          renderItem={({index}) => (
+          renderItem={({ index }) => (
             <View
               style={{
-                width: "100%",
-                height: "auto",
+                width: '100%',
+                height: 'auto',
                 aspectRatio: 1.6,
                 borderWidth: 1,
-                justifyContent: "center",
-                backgroundColor: "red"
+                justifyContent: 'center',
+                backgroundColor: 'red',
               }}
             >
-              <Text style={{textAlign: "center", fontSize: 30}}>{index}</Text>
+              <Text style={{ textAlign: 'center', fontSize: 30 }}>{index}</Text>
             </View>
           )}
         />

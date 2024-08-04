@@ -1,11 +1,11 @@
-import {Text, TouchableOpacity} from "react-native";
-import React from "react";
+import { Text, TouchableOpacity } from 'react-native';
+import React from 'react';
 
 const ReButton = ({
   name,
   isLoading = false,
   isDisabled = false,
-  onPress
+  onPress,
 }: {
   name?: string;
   isLoading?: boolean;

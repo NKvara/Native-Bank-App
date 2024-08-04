@@ -1,9 +1,9 @@
 // https://docs.expo.dev/guides/using-eslint/
 {
-  "extends": ["expo","prettier"],
+  "extends": ["expo", "prettier"],
   "rules": {
     // react rules
-   "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
     "react/jsx-no-useless-fragment": "off",
@@ -23,22 +23,22 @@
     "@typescript-eslint/no-shadow": ["error"],
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/semi": ["error", "always"],
-     // import rules
-     "import/no-extraneous-dependencies": "off",
-     "import/no-absolute-path": "off",
-     "import/no-unresolved": "off",
-     "import/extensions": [
-       "error",
-       "ignorePackages",
-       {
-         "ts": "never",
-         "tsx": "never",
-         "js": "never",
-         "jsx": "never"
-       }
-     ],
-     "import/prefer-default-export": "off",
-      // global rules
+    // import rules
+    "import/no-extraneous-dependencies": "off",
+    "import/no-absolute-path": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    // global rules
     "no-use-before-define": "off",
     "no-restricted-globals": "off",
     "no-param-reassign": "off",
