@@ -1,0 +1,73 @@
+// https://docs.expo.dev/guides/using-eslint/
+{
+  "extends": ["expo"],
+  "rules": {
+    // react rules
+   "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/function-component-definition": "off",
+    "react/button-has-type": "off",
+    "react/prop-types": "off",
+    "react/no-unstable-nested-components": "off",
+    "react/no-children-prop": "off",
+    "react/no-unused-prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "react/jsx-key": "error",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "react/destructuring-assignment": "off",
+    // typescript rules
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/semi": ["error", "always"],
+     // import rules
+     "import/no-extraneous-dependencies": "off",
+     "import/no-absolute-path": "off",
+     "import/no-unresolved": "off",
+     "import/extensions": [
+       "error",
+       "ignorePackages",
+       {
+         "ts": "never",
+         "tsx": "never",
+         "js": "never",
+         "jsx": "never"
+       }
+     ],
+     "import/prefer-default-export": "off",
+      // global rules
+    "no-use-before-define": "off",
+    "no-restricted-globals": "off",
+    "no-param-reassign": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "arrow-body-style": "off",
+    "no-shadow": "off",
+    "semi": ["error", "always"],
+    "no-warning-comments": [
+      "warn",
+      {
+        "terms": ["todo", "fixme"],
+        "location": "start"
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "globals": {
+    "React": true,
+    "JSX": true,
+    "NodeJS": true
+  }
+}
