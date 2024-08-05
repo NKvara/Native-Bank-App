@@ -1,8 +1,8 @@
 import { View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useColorScheme } from 'nativewind';
-import LoginHeader from '@/components/login/header';
-import LoginBody from '@/components/login/body';
+import LoginHeader from '@/features/login/header';
+import LoginBody from '@/features/login/body';
 
 const Login = () => {
   const { colorScheme } = useColorScheme();

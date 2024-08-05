@@ -1,7 +1,7 @@
 import { View, Image, TouchableHighlight } from 'react-native';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import ReText from '@/components/shared/ReText';
+import ReText from '@/common/shared/ReText';
 import { useColorScheme } from 'nativewind';
 
 const LoginHeader = () => {

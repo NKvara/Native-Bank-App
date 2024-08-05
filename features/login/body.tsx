@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import React from 'react';
-import Input from '@/components/shared/Input';
-import ReButton from '@/components/shared/ReButton';
+import ReButton from '@/common/shared/ReButton';
+import Input from '@/common/shared/Input';
 import { router } from 'expo-router';
 import { useFormik } from 'formik';
 import { useSession } from '@/ctx/ctx';

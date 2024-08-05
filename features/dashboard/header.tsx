@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useSession } from '@/ctx/ctx';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { colorPick } from '@/color-theme';
-import ReText from '@/components/shared/ReText';
+import ReText from '@/common/shared/ReText';
 
 const DashboardHeader = () => {
   const { session } = useSession();

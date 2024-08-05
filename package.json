@@ -7,11 +7,13 @@
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "type-check": "tsc --noEmit",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx app components constants ctx hooks",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx app common constants ctx features types",
     "prepare": "husky install",
-    "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\""
+    "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
+    "check-all": "yarn lint && yarn type-check"
   },
   "jest": {
     "preset": "jest-expo"
@@ -64,9 +66,10 @@
   "private": true,
   "lint-staged": {
     "app/**/*.{js,jsx,ts,tsx}": "eslint --fix",
+    "common/**/*.{js,jsx,ts,tsx}": "eslint --fix",
     "constants/**/*.{js,jsx,ts,tsx}": "eslint --fix",
-    "components/**/*.{js,jsx,ts,tsx}": "eslint --fix",
     "ctx/**/*.{js,jsx,ts,tsx}": "eslint --fix",
-    "hooks/**/*.{js,jsx,ts,tsx}": "eslint --fix"
+    "types/**/*.{js,jsx,ts,tsx}": "eslint --fix",
+    "features/**/*.{js,jsx,ts,tsx}": "eslint --fix"
   }
 }

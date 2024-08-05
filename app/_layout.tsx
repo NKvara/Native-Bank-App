@@ -6,7 +6,7 @@ import { SessionProvider } from '../ctx/ctx';
 
 import '../global.css';
 import { Slot } from 'expo-router';
-import { ThemeProvider } from '@/components/ThemeProviders';
+import { ThemeProvider } from '@/common/ThemeProviders';
 
 export {
   // Catch any errors thrown by the Layout component.
