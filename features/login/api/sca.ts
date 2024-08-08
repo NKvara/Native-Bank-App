@@ -1,3 +1,4 @@
+import { ScaResponseStatus } from '@/context/ctx';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -10,12 +11,12 @@ interface ScaParams {
 export type ScaDataForTrastedDevice = string;
 
 export interface ScaResponseWithoutTrustedDevice {
-  status: string;
+  status: ScaResponseStatus;
   otpSessionId: string;
 }
 
 interface ScaResponse<T> {
-  status: number;
+  status: ScaResponseStatus;
   statusDescription: string;
   data: T;
 }

@@ -1,3 +1,4 @@
+import { ScaResponseStatus } from '@/context/ctx';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -8,12 +9,12 @@ interface verifyParams {
 }
 
 export interface verifyResponseWithoutTrustedDevice {
-  status: string;
+  status: ScaResponseStatus;
   otpSessionId: string;
 }
 
 interface verifyResponse {
-  status: number;
+  status: ScaResponseStatus;
   statusDescription: string;
   data: string;
 }

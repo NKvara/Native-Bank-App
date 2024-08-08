@@ -5,7 +5,11 @@ import { router } from 'expo-router';
 import { useVerify } from '@/features/login/api/verify';
 
 // TODO
-// const trustedDeviceId = '7AA76B98-0547-4168-99B3-8B10A2C25B8F';
+
+export enum ScaResponseStatus {
+  success = '0',
+  otpRequired = '1',
+}
 
 interface SignInProps {
   username: string;
@@ -61,11 +65,11 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
             { username, deviceId, password },
             {
               onSuccess: (data) => {
-                if (isNotTrastedDevice(data.data)) {
-                  setOtpSessionId(data.data.otpSessionId);
-                } else {
-                  setSession(data.data);
+                if (data.status === ScaResponseStatus.success || !isNotTrastedDevice(data.data)) {
+                  setSession(data.data as string);
                   router.replace('/(tabs)');
+                } else {
+                  setOtpSessionId(data.data.otpSessionId);
                 }
               },
             }

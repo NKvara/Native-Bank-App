@@ -20,7 +20,11 @@ const LoginBody = () => {
   const { signIn, isLoading } = useSession();
   const getDeviceId = useGetDeviceId();
 
-  const { control, getValues, setValue, handleSubmit, watch } = useForm<Inputs>();
+  const { control, getValues, setValue, handleSubmit, watch } = useForm<Inputs>({
+    defaultValues: {
+      otpCode: '',
+    },
+  });
 
   watch(['passwordVisible', 'username', 'password', 'otpCode']);
   return (
@@ -32,13 +36,14 @@ const LoginBody = () => {
         rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => (
           <Input
+            id="username"
             onChangeText={onChange}
             onBlur={onBlur}
             value={value}
             placeholder="Username"
             icon="person-outline"
             keyboard="default"
-            type="username"
+            editable={!getValues('otpSessionId')}
           />
         )}
       />
@@ -48,14 +53,16 @@ const LoginBody = () => {
         rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => (
           <Input
+            id="password"
             onChangeText={onChange}
             onBlur={onBlur}
             value={value}
+            // disabled={!!getValues('otpSessionId')}
             placeholder="Password"
             isPassword={!getValues('passwordVisible')}
             icon="lock-closed-outline"
             keyboard="default"
-            type="password"
+            editable={!getValues('otpSessionId')}
             rightIcon={{
               icon: getValues('passwordVisible') ? 'eye-off-outline' : 'eye-outline',
               onPress: () => {
@@ -72,13 +79,13 @@ const LoginBody = () => {
           rules={{ required: true, maxLength: 4, max: 4 }}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
+              id="otpCode"
               onChangeText={onChange}
               onBlur={onBlur}
               value={value}
               placeholder="otp"
               icon="keypad"
               keyboard="default"
-              type="telephoneNumber"
             />
           )}
         />
@@ -90,7 +97,7 @@ const LoginBody = () => {
           !getValues('username') ||
           !getValues('password') ||
           isLoading ||
-          (!!getValues('otpCode') && getValues('otpCode').length !== 4)
+          (!!getValues('otpSessionId') && getValues('otpCode').length !== 4)
         }
         onPress={handleSubmit((data) => {
           if (!getDeviceId) return;
