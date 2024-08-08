@@ -23,7 +23,12 @@ interface ScaResponse<T> {
 export const PostSca = async (data: ScaParams) => {
   const response = await axios.post<ScaResponse<ScaResponseWithoutTrustedDevice | ScaDataForTrastedDevice>>(
     'http://172.30.12.26:5001/api/SCA',
-    data
+    data,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
   );
 
   return response.data;
