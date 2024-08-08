@@ -1,8 +1,8 @@
 import { Button, View } from 'react-native';
 
-import { useSession } from '../../../../ctx/ctx';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DashboardHeader from '@/features/dashboard/header';
+import { useSession } from '@/context/ctx';
 // import DashboardCards from "@/components/dashboard/cards";
 
 export default function DashboardScreen() {

@@ -2,67 +2,74 @@ import { View } from 'react-native';
 import React from 'react';
 import ReButton from '@/common/shared/ReButton';
 import Input from '@/common/shared/Input';
-import { router } from 'expo-router';
-import { useFormik } from 'formik';
-import { useSession } from '@/ctx/ctx';
+import { Controller, useForm } from 'react-hook-form';
+import { Link } from 'expo-router';
+import { useSession } from '@/context/ctx';
+
+interface Inputs {
+  username: string;
+  password: string;
+  deviceId: string;
+  passwordVisible: boolean;
+  otpSessionId: string;
+}
 
 const LoginBody = () => {
   const { signIn } = useSession();
 
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-      passwordVisible: false,
-    },
-    onSubmit(values) {
-      signIn(values.username);
-      // @ts-ignore next line
-      router.replace('/');
-    },
-  });
+  const { control, getValues, setValue, handleSubmit, watch } = useForm<Inputs>();
+
+  watch(['passwordVisible', 'username', 'password']);
 
   return (
     <View className="justify-center items-center gap-4 p-8 flex-1">
-      <Input
+      <Link href="/(tabs)">View details</Link>
+      <Controller
         name="username"
-        placeholder="Username"
-        // icon="person-outline"
-        keyboard="default"
-        type="username"
-        onChangeText={(e) => {
-          formik.setFieldValue('username', e);
-        }}
-        onBlur={() => {
-          formik.handleBlur('username');
-        }}
-        value={formik.values.username}
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <Input
+            onChangeText={onChange}
+            onBlur={onBlur}
+            value={value}
+            placeholder="Username"
+            icon="person-outline"
+            keyboard="default"
+            type="username"
+          />
+        )}
       />
-      <Input
+      <Controller
         name="password"
-        placeholder="Password"
-        // icon="key-outline"
-        keyboard="default"
-        type="password"
-        isPassword={!formik.values.passwordVisible}
-        onChangeText={(e) => {
-          formik.setFieldValue('password', e);
-        }}
-        onBlur={() => {
-          formik.handleBlur('password');
-        }}
-        value={formik.values.password}
-        rightIcon={{
-          icon: formik.values.passwordVisible ? 'eye-off-outline' : 'eye-outline',
-          onPress: () => {
-            formik.setFieldValue('passwordVisible', !formik.values.passwordVisible);
-          },
-        }}
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <Input
+            onChangeText={onChange}
+            onBlur={onBlur}
+            value={value}
+            placeholder="Password"
+            isPassword={!getValues('passwordVisible')}
+            icon="lock-closed-outline"
+            keyboard="default"
+            type="password"
+            rightIcon={{
+              icon: getValues('passwordVisible') ? 'eye-off-outline' : 'eye-outline',
+              onPress: () => {
+                setValue('passwordVisible', !getValues('passwordVisible'));
+              },
+            }}
+          />
+        )}
       />
+
       <ReButton
         name="Login"
-        isDisabled={!formik.values.username || !formik.values.password}
-        onPress={formik.handleSubmit}
+        isDisabled={!getValues('username') || !getValues('password')}
+        onPress={handleSubmit((data) => {
+          return signIn({ ...data, setOtpSessionId: (otpSessionId: string) => setValue('otpSessionId', otpSessionId) });
+        })}
       />
     </View>
   );

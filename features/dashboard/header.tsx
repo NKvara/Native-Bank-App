@@ -1,13 +1,10 @@
 import { Image, View } from 'react-native';
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useSession } from '@/ctx/ctx';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { colorPick } from '@/color-theme';
-import ReText from '@/common/shared/ReText';
 
 const DashboardHeader = () => {
-  const { session } = useSession();
   const color = colorPick();
 
   return (
@@ -32,7 +29,7 @@ const DashboardHeader = () => {
             className="w-full h-full rounded-2xl bg-white border border-solid border-rebankBackground"
           />
         </LinearGradient>
-        <ReText className="text-lg font-bold">{session}</ReText>
+        {/* <ReText className="text-lg font-bold">{session}</ReText> */}
         <FontAwesome
           name="chevron-right"
           color={color['--color-rebankYellow']}
