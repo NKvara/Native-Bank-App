@@ -1,38 +1,24 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { View, TextInput, KeyboardTypeOptions, TextInputProps, TouchableHighlight } from 'react-native';
+import { View, TextInput, TextInputProps, TouchableHighlight } from 'react-native';
 import { ColorPick } from '@/color-theme';
 
 interface Props extends TextInputProps {
-  icon?: keyof typeof Ionicons.glyphMap;
-  placeholder: string;
-  isPassword?: boolean;
-  keyboard: KeyboardTypeOptions;
-  props?: TextInputProps;
-  rightIcon?: {
+  startAdornment?: keyof typeof Ionicons.glyphMap;
+  endAdornment?: {
     icon: keyof typeof Ionicons.glyphMap;
     onPress?: () => void;
   };
 }
 
-const Input = ({
-  placeholder,
-  icon,
-  isPassword = false,
-  keyboard,
-  value,
-  onChangeText,
-  onBlur,
-  props,
-  rightIcon,
-}: Props) => {
+const Input = ({ endAdornment, startAdornment, ...props }: Props) => {
   const color = ColorPick();
 
   return (
     <View className="flex-row items-center h-16 bg-inputBackground w-full px-6 rounded-xl">
-      {icon && (
+      {startAdornment && (
         <Ionicons
           className="pr-4"
-          name={icon}
+          name={startAdornment}
           size={20}
         />
       )}
@@ -40,23 +26,17 @@ const Input = ({
         {...props}
         className="text-rebankPrimary h-full flex-1"
         placeholderTextColor={color['--color-rebankGrey']}
-        placeholder={placeholder}
-        keyboardType={keyboard}
         textAlignVertical="center"
         autoCapitalize="none"
-        value={value}
-        onChangeText={onChangeText}
-        onBlur={onBlur}
-        secureTextEntry={isPassword}
       />
-      {rightIcon && (
+      {endAdornment && (
         <TouchableHighlight
           underlayColor="transparent"
-          onPress={rightIcon.onPress}
+          onPress={endAdornment.onPress}
         >
           <Ionicons
             className="pl-4"
-            name={rightIcon.icon}
+            name={endAdornment.icon}
             size={20}
           />
         </TouchableHighlight>

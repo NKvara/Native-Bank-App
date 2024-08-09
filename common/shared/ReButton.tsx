@@ -1,23 +1,18 @@
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, TouchableOpacityProps, ActivityIndicator } from 'react-native';
 import React from 'react';
 
-const ReButton = ({
-  name,
-  isLoading = false,
-  isDisabled = false,
-  onPress,
-}: {
-  name?: string;
+interface ButtonProps extends TouchableOpacityProps {
+  name: string;
   isLoading?: boolean;
-  isDisabled?: boolean;
-  onPress?: () => void;
-}) => {
+}
+
+const ReButton = ({ name, isLoading, ...props }: ButtonProps) => {
   return (
     <TouchableOpacity
-      className="flex justify-center items-center w-full h-14 rounded-xl bg-rebankYellow disabled:opacity-20 disabled:bg-rebankPurple"
-      disabled={isLoading || isDisabled}
-      onPress={onPress}
+      className="flex justify-center flex-row gap-4 items-center w-full h-14 rounded-xl bg-rebankYellow disabled:opacity-20 disabled:bg-rebankPurple"
+      {...props}
     >
+      {isLoading && <ActivityIndicator color="black" />}
       <Text className="font-bold">{name}</Text>
     </TouchableOpacity>
   );

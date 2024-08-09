@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext } from 'react';
+import React, { createContext, ReactNode, useCallback, useContext } from 'react';
 import { ScaDataForTrustedDevice, ScaResponseWithoutTrustedDevice, useSca } from '@/features/login/api/sca';
 import { useStorageState } from './useStorageState';
 import { router } from 'expo-router';
@@ -25,6 +25,8 @@ interface AuthContextType {
   signOut: () => void;
   session?: string | null;
   isLoading: boolean;
+  mutateSca: any;
+  mutateVerify: any;
 }
 
 const isNotTrustedDevice = (
@@ -38,6 +40,8 @@ const AuthContext = createContext<AuthContextType>({
   signOut: () => {},
   session: null,
   isLoading: true,
+  mutateSca: null,
+  mutateVerify: null,
 });
 
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
@@ -46,40 +50,47 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
   const mutateSca = useSca();
   const mutateVerify = useVerify();
 
+  const signIn = useCallback(
+    ({ username, deviceId, password, setOtpSessionId, otpSessionId, otpCode }: SignInProps) => {
+      if (otpSessionId) {
+        return mutateVerify.mutate(
+          { username, otpCode, otpSessionId },
+          {
+            onSuccess: (data) => {
+              setSession(data.data);
+              router.replace('/(tabs)');
+            },
+          }
+        );
+      }
+      return mutateSca.mutate(
+        { username, deviceId, password },
+        {
+          onSuccess: (data) => {
+            if (data.status === ScaResponseStatus.success || !isNotTrustedDevice(data.data)) {
+              setSession(data.data as string);
+              router.replace('/(tabs)');
+            } else {
+              setOtpSessionId(data.data.otpSessionId);
+            }
+          },
+        }
+      );
+    },
+    [mutateSca, mutateVerify, setSession]
+  );
+
   return (
     <AuthContext.Provider
       value={{
-        signIn: ({ username, deviceId, password, setOtpSessionId, otpSessionId, otpCode }) => {
-          if (otpSessionId) {
-            return mutateVerify.mutate(
-              { username, otpCode, otpSessionId },
-              {
-                onSuccess: (data) => {
-                  setSession(data.data);
-                  router.replace('/(tabs)');
-                },
-              }
-            );
-          }
-          return mutateSca.mutate(
-            { username, deviceId, password },
-            {
-              onSuccess: (data) => {
-                if (data.status === ScaResponseStatus.success || !isNotTrustedDevice(data.data)) {
-                  setSession(data.data as string);
-                  router.replace('/(tabs)');
-                } else {
-                  setOtpSessionId(data.data.otpSessionId);
-                }
-              },
-            }
-          );
-        },
+        signIn,
         signOut: () => {
           setSession(null);
         },
         session,
         isLoading,
+        mutateSca: mutateSca,
+        mutateVerify: mutateVerify,
       }}
     >
       {children}

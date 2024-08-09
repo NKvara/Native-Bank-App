@@ -1,0 +1,25 @@
+export const NUMBERS = /^[0-9]+(\.)?([0-9]{1,2})?$/;
+export const NUMBERS_AND_LATIN = /^[a-zA-Z0-9]+$/;
+export const LATIN_AND_SPACE = /^[a-zA-Z\s]+$/;
+export const NUMBERS_LATIN_AND_SPACE = /^[0-9a-zA-Z\s]+$/;
+export const PURPOSE_LATIN = /^[A-Za-z0-9/\-?,.()+ _]*$/;
+export const PURPOSE = /^[ა-ჰA-Za-z0-9/\-?,.()+ _]*$/;
+export const DECIMALS = /^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/;
+export const DECIMALS_FIX_TWO = /^[0-9][0-9]*[.]?[0-9]{0,2}$/;
+export const PHONE_REG_EXP = /^5\d\d \d\d\d \d\d\d$/;
+export const NUMBER_ONLY_STRING = /^[0-9]*$/;
+export const VALID_IBAN = /^GE\d{2}[A-Z]{2}\d{16}$/;
+export const OTP_REGEX = /^(\d){4}$/;
+export const TOTP_REGEX = /^(\d){6}$/;
+export const OTP_REGEX_INPUT = /^(\d){0,4}$/;
+export const NUMBERS_AND_SNOWFLAKES = /^\*{12}(\d{0,4})$/;
+export const IS_GEORGIAN_IBAN = /^GE\d{2}[A-Z]{2}\d{16}$/;
+export const PASSWORD = /^(?=.*[#?!@$%^&*-])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
+// eslint-disable-next-line no-useless-escape
+export const USERNAME = /^[a-zA-Z0-9]+([\.\_\]?[a-zA-Z0-9]+)?$/;
+export const MIN_SYMBOL = /^(?=.*[#?!@$%^&*-])/;
+export const MIN_CHARACTERS = /^(.{8,})/;
+export const MIN_CAPITAL = /^(?=.*[A-Z])/;
+export const MIN_LOWER = /^(?=.*[a-z])/;
+export const MIN_DIGIT = /^(?=.*[0-9])/;
+export const EMAIL = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
