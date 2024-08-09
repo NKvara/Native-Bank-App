@@ -23,7 +23,7 @@ export const colors = {
   },
 };
 
-export const colorPick = () => {
+export const ColorPick = () => {
   const { colorScheme } = useColorScheme();
   return colors[colorScheme!];
 };

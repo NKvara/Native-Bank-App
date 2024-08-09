@@ -1,6 +1,6 @@
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { View, TextInput, KeyboardTypeOptions, TextInputProps, TouchableHighlight } from 'react-native';
-import { colorPick } from '@/color-theme';
+import { ColorPick } from '@/color-theme';
 
 interface Props extends TextInputProps {
   icon?: keyof typeof Ionicons.glyphMap;
@@ -25,7 +25,7 @@ const Input = ({
   props,
   rightIcon,
 }: Props) => {
-  const color = colorPick();
+  const color = ColorPick();
 
   return (
     <View className="flex-row items-center h-16 bg-inputBackground w-full px-6 rounded-xl">

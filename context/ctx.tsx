@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext } from 'react';
-import { ScaDataForTrastedDevice, ScaResponseWithoutTrustedDevice, useSca } from '@/features/login/api/sca';
+import { ScaDataForTrustedDevice, ScaResponseWithoutTrustedDevice, useSca } from '@/features/login/api/sca';
 import { useStorageState } from './useStorageState';
 import { router } from 'expo-router';
 import { useVerify } from '@/features/login/api/verify';
@@ -27,8 +27,8 @@ interface AuthContextType {
   isLoading: boolean;
 }
 
-const isNotTrastedDevice = (
-  data: ScaResponseWithoutTrustedDevice | ScaDataForTrastedDevice
+const isNotTrustedDevice = (
+  data: ScaResponseWithoutTrustedDevice | ScaDataForTrustedDevice
 ): data is ScaResponseWithoutTrustedDevice => {
   return (data as ScaResponseWithoutTrustedDevice).otpSessionId !== undefined;
 };
@@ -65,7 +65,7 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
             { username, deviceId, password },
             {
               onSuccess: (data) => {
-                if (data.status === ScaResponseStatus.success || !isNotTrastedDevice(data.data)) {
+                if (data.status === ScaResponseStatus.success || !isNotTrustedDevice(data.data)) {
                   setSession(data.data as string);
                   router.replace('/(tabs)');
                 } else {

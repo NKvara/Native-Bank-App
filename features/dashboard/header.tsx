@@ -2,10 +2,10 @@ import { Image, View } from 'react-native';
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import { colorPick } from '@/color-theme';
+import { ColorPick } from '@/color-theme';
 
 const DashboardHeader = () => {
-  const color = colorPick();
+  const color = ColorPick();
 
   return (
     <View className="flex-row justify-between items-center h-16">

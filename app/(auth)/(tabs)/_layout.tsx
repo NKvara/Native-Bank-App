@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
-import { colorPick } from '@/color-theme';
+import { ColorPick } from '@/color-theme';
 import { View } from 'react-native';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -10,7 +10,7 @@ function TabBarIcon(props: {
   color: string;
   focused: boolean;
 }) {
-  const color = colorPick();
+  const color = ColorPick();
 
   return (
     <View className="items-center">
@@ -28,13 +28,13 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
-  const colorPicker = colorPick();
+  const ColorPicker = ColorPick();
 
   return (
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
-        tabBarActiveTintColor: colorPicker['--color-rebankYellow'],
+        tabBarActiveTintColor: ColorPicker['--color-rebankYellow'],
         headerShown: false,
         tabBarStyle: {
           display: 'flex',
@@ -46,7 +46,7 @@ export default function TabLayout() {
           borderTopWidth: 0,
           borderRadius: 32,
           height: 64,
-          backgroundColor: colorPicker['--color-inputBackground'],
+          backgroundColor: ColorPicker['--color-inputBackground'],
         },
         tabBarItemStyle: {
           height: 64,
