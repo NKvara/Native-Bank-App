@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import React from 'react';
 import ReButton from '@/common/shared/ReButton';
 import Input from '@/common/shared/Input';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useSession } from '@/context/ctx';
 import { useGetDeviceId } from '@/common/helper/getUUID';
 
@@ -28,62 +28,40 @@ const LoginBody = () => {
   watch(['passwordVisible', 'username', 'password', 'otpCode']);
   return (
     <View className="justify-center items-center gap-4 p-8 flex-1">
-      <Controller
+      <Input
         name="username"
         control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            id="username"
-            onChangeText={onChange}
-            onBlur={onBlur}
-            value={value}
-            placeholder="Username"
-            startAdornment="person-outline"
-            keyboardType="default"
-            editable={!getValues('otpSessionId')}
-          />
-        )}
+        id="username"
+        placeholder="Username"
+        startAdornment="person-outline"
+        keyboardType="default"
+        editable={!getValues('otpSessionId')}
       />
-      <Controller
+      <Input
         name="password"
         control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            id="password"
-            onChangeText={onChange}
-            onBlur={onBlur}
-            value={value}
-            // disabled={!!getValues('otpSessionId')}
-            placeholder="Password"
-            secureTextEntry={!getValues('passwordVisible')}
-            startAdornment="lock-closed-outline"
-            keyboardType="default"
-            editable={!getValues('otpSessionId')}
-            endAdornment={{
-              icon: getValues('passwordVisible') ? 'eye-off-outline' : 'eye-outline',
-              onPress: () => {
-                setValue('passwordVisible', !getValues('passwordVisible'));
-              },
-            }}
-          />
-        )}
+        id="password"
+        placeholder="Password"
+        secureTextEntry={!getValues('passwordVisible')}
+        startAdornment="lock-closed-outline"
+        keyboardType="default"
+        editable={!getValues('otpSessionId')}
+        endAdornment={{
+          icon: getValues('passwordVisible') ? 'eye-off-outline' : 'eye-outline',
+          onPress: () => {
+            setValue('passwordVisible', !getValues('passwordVisible'));
+          },
+        }}
       />
       {getValues('otpSessionId') && (
-        <Controller
+        <Input
+          id="otpCode"
           name="otpCode"
           control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              id="otpCode"
-              onChangeText={onChange}
-              onBlur={onBlur}
-              value={value}
-              placeholder="otp"
-              startAdornment="keypad"
-              keyboardType="default"
-              maxLength={4}
-            />
-          )}
+          placeholder="otp"
+          startAdornment="keypad"
+          keyboardType="default"
+          maxLength={4}
         />
       )}
 

@@ -74,6 +74,7 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
               setOtpSessionId(data.data.otpSessionId);
             }
           },
+          onError: () => {},
         }
       );
     },
