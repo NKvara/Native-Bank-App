@@ -8,6 +8,7 @@ import '../global.css';
 import { Slot } from 'expo-router';
 import { ThemeProvider } from '@/common/ThemeProviders';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AxiosProvider } from '@/configurations/axios';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -45,9 +46,11 @@ export const RootLayout = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider>
-        <ThemeProvider>
-          <Slot />
-        </ThemeProvider>
+        <AxiosProvider>
+          <ThemeProvider>
+            <Slot />
+          </ThemeProvider>
+        </AxiosProvider>
       </SessionProvider>
     </QueryClientProvider>
   );

@@ -22,6 +22,7 @@ const LoginBody = () => {
   const { control, getValues, setValue, handleSubmit, watch } = useForm<Inputs>({
     defaultValues: {
       otpCode: '',
+      passwordVisible: false,
     },
   });
 

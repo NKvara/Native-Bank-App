@@ -5,7 +5,7 @@ import { useController } from 'react-hook-form';
 
 interface Props extends TextInputProps {
   // TODO
-  control: any;
+  control?: any;
   name: string;
   startAdornment?: keyof typeof Ionicons.glyphMap;
   endAdornment?: {
@@ -20,6 +20,8 @@ const Input = ({ control, name, endAdornment, startAdornment, ...props }: Props)
   } = useController({ control, name });
   const color = ColorPick();
 
+  // ! still has an issue, suggestion field keeps buggin on phone
+
   return (
     <View className="flex-row items-center h-16 bg-inputBackground w-full px-6 rounded-xl">
       {startAdornment && (
@@ -27,6 +29,7 @@ const Input = ({ control, name, endAdornment, startAdornment, ...props }: Props)
           className="pr-4"
           name={startAdornment}
           size={20}
+          color={color['--color-rebankPrimary']}
         />
       )}
       <TextInput
@@ -34,6 +37,8 @@ const Input = ({ control, name, endAdornment, startAdornment, ...props }: Props)
         placeholderTextColor={color['--color-rebankGrey']}
         textAlignVertical="center"
         autoCapitalize="none"
+        autoCorrect={false}
+        spellCheck={false}
         onChangeText={onChange}
         onBlur={onBlur}
         value={value}
@@ -49,6 +54,7 @@ const Input = ({ control, name, endAdornment, startAdornment, ...props }: Props)
             className="pl-4"
             name={endAdornment.icon}
             size={20}
+            color={color['--color-rebankPrimary']}
           />
         </TouchableHighlight>
       )}

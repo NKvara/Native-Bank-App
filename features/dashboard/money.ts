@@ -2,24 +2,12 @@ export enum Currency {
   GEL = 'GEL',
   USD = 'USD',
   EUR = 'EUR',
-  GBP = 'GBP',
-  CHF = 'CHF',
-  AZN = 'AZN',
-  TRY = 'TRY',
-  CNY = 'CNY',
-  RUB = 'RUB',
 }
 
 export enum GetCurrencyEnum {
   GEL = '₾',
   USD = '$',
   EUR = '€',
-  GBP = '£',
-  CHF = '₣',
-  AZN = '₼',
-  TRY = '₺',
-  CNY = '¥',
-  RUB = '₽',
 }
 
 export const getMoneySign = (currency?: Currency) => {

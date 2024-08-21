@@ -47,6 +47,8 @@ const AuthContext = createContext<AuthContextType>({
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
   const [[isLoading, session], setSession] = useStorageState('session');
 
+  // TODO add /api/User
+
   const mutateSca = useSca();
   const mutateVerify = useVerify();
 

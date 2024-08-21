@@ -11,6 +11,7 @@ module.exports = {
         rebankPurple: 'var(--color-rebankPurple)',
         rebankGrey: 'var(--color-rebankGrey)',
         rebankDimGrey: 'var(--color-rebankDimGrey)',
+        rebankBgGrey: 'var(--color-rebankBgGrey)',
         redError: 'var(--color-redError)',
         inputBackground: 'var(--color-inputBackground)',
         rebankBackground: 'var(--color-rebankBackground)',

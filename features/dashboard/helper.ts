@@ -1,5 +1,33 @@
 import { Currency } from '@/features/dashboard/money';
 
+// ! DELETE
+
+export const data = [
+  { id: 1, title: 'Aivee', reason: 'eleifend donec ut dolor', date: '1716906830000', amount: 792.66 },
+  { id: 2, title: 'Oyondu', reason: 'diam erat fermentum', date: '1716906830000', amount: 784.55 },
+  { id: 3, title: 'Voonyx', reason: 'eget tincidunt eget tempus', date: '1715512182000', amount: -620.04 },
+  { id: 4, title: 'Tagpad', reason: 'fermentum justo nec condimentum', date: '1718216750000', amount: 127.67 },
+  { id: 5, title: 'Dabfeed', reason: 'neque sapien', date: '1708287412000', amount: -637.31 },
+  { id: 6, title: 'Vidoo', reason: 'aliquet maecenas leo odio', date: '1715512182000', amount: 314.59 },
+  { id: 7, title: 'Feedmix', reason: 'donec quis', date: '1721443552000', amount: -886.39 },
+  { id: 8, title: 'Abata', reason: 'curabitur in libero ut', date: '1712152905000', amount: -679.94 },
+  { id: 9, title: 'Photojam', reason: 'ligula pellentesque', date: '1713379176000', amount: 94.71 },
+  { id: 10, title: 'Camimbo', reason: 'augue vel accumsan tellus', date: '1712152905000', amount: 654.84 },
+  { id: 11, title: 'Kare', reason: 'quis libero', date: '1712905045000', amount: -362.89 },
+  { id: 12, title: 'Flashdog', reason: 'fringilla rhoncus mauris', date: '1712905045000', amount: -134.61 },
+];
+
+export const getImage = (type: number) => {
+  switch (type) {
+    case 100:
+      return require('@/assets/images/dashboard/cards/2.png');
+    case 200:
+      return require('@/assets/images/dashboard/cards/3.png');
+    default:
+      return require('@/assets/images/dashboard/cards/2.png');
+  }
+};
+
 enum GetCardIssuer {
   VISA = 'cc-visa',
   MASTERCARD = 'cc-mastercard',
