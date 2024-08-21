@@ -1,7 +1,7 @@
 import { useSession } from '@/context/ctx';
 import { View, Button } from 'react-native';
 
-export default function TabTwoScreen() {
+export default function TabThreeScreen() {
   const { signOut } = useSession();
 
   return (

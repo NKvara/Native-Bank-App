@@ -1,4 +1,4 @@
-import { Currency } from '@/features/dashboard/money';
+import { Currency } from '@/features/dashboard/helper/money';
 
 // ! DELETE
 

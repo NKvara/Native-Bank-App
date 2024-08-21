@@ -1,4 +1,4 @@
-import { Currency } from '@/features/dashboard/money';
+import { Currency } from '@/features/dashboard/helper/money';
 import { Account } from '@/features/dashboard/api/accountList';
 import { groupBy } from 'lodash';
 import getProp from '@/common/helper/getProp';

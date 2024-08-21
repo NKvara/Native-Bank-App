@@ -10,18 +10,11 @@ function TabBarIcon(props: {
   color: string;
   focused: boolean;
 }) {
-  const color = ColorPick();
-
   return (
     <View className="items-center">
       <FontAwesome
-        size={32}
+        size={24}
         {...props}
-      />
-      <FontAwesome
-        size={5}
-        name="circle"
-        color={props.focused ? props.color : color['--color-inputBackground']}
       />
     </View>
   );
@@ -34,7 +27,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
-        tabBarActiveTintColor: ColorPicker['--color-rebankYellow'],
+        tabBarActiveTintColor: ColorPicker['--color-rebankPrimary'],
         headerShown: false,
         tabBarStyle: {
           display: 'flex',
@@ -42,14 +35,15 @@ export default function TabLayout() {
           justifyContent: 'center',
           position: 'absolute',
           bottom: 16,
-          marginHorizontal: 12,
+          paddingHorizontal: 12,
+          marginHorizontal: 64,
           borderTopWidth: 0,
           borderRadius: 32,
-          height: 64,
+          height: 52,
           backgroundColor: ColorPicker['--color-inputBackground'],
         },
         tabBarItemStyle: {
-          height: 64,
+          height: 52,
         },
       }}
     >
@@ -70,6 +64,45 @@ export default function TabLayout() {
         name="two"
         options={{
           title: 'Tab Two',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name="bug"
+              color={color}
+              focused={focused}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="three"
+        options={{
+          title: 'Tab Three',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name="grav"
+              color={color}
+              focused={focused}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="four"
+        options={{
+          title: 'Tab Four',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name="play"
+              color={color}
+              focused={focused}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="five"
+        options={{
+          title: 'Tab Five',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name="cog"

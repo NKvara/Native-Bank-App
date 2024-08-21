@@ -1,4 +1,4 @@
-import { Currency } from '@/features/dashboard/money';
+import { Currency } from '@/features/dashboard/helper/money';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import axiosInstance from '@/configurations/axios';
 

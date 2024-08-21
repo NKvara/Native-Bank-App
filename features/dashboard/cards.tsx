@@ -2,12 +2,12 @@ import { View, Dimensions, Image } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
 import ReText from '@/common/shared/ReText';
-import { Currency, getMoneyAmount } from '@/features/dashboard/money';
+import { Currency, getMoneyAmount } from '@/features/dashboard/helper/money';
 import { FontAwesome } from '@expo/vector-icons';
 import { getAccounts } from '@/common/helper/getAccounts';
 import { useAccountList } from '@/features/dashboard/api/accountList';
 import { ColorPick } from '@/color-theme';
-import { getImage } from '@/features/dashboard/helper';
+import { getImage } from '@/features/dashboard/helper/helper';
 
 const DashboardCards = () => {
   const color = ColorPick();
@@ -31,14 +31,14 @@ const DashboardCards = () => {
   }
 
   return (
-    <View className="mx-[-1rem]">
-      <View className="items-center justify-center h-48">
+    <View>
+      <View className="items-center justify-center h-44">
         <Carousel
           ref={carouselRef}
           loop={false}
           mode="parallax"
-          modeConfig={{ parallaxScrollingOffset: 120 }}
-          width={Dimensions.get('window').width + 64}
+          modeConfig={{ parallaxScrollingOffset: 38, parallaxScrollingScale: 0.92 }}
+          width={Dimensions.get('window').width}
           autoPlay={false}
           data={[...accounts]}
           onProgressChange={(_, e) => {

@@ -18,10 +18,10 @@ export const colors = {
     '--color-rebankPurple': '#9481b4',
     '--color-rebankGrey': '#8d8e94',
     '--color-rebankDimGrey': '#32363E',
-    '--color-rebankBgGrey': '#212329',
+    '--color-rebankBgGrey': '#141519',
     '--color-redError': '#E86B73',
     '--color-inputBackground': '#000000',
-    '--color-rebankBackground': '#16181C',
+    '--color-rebankBackground': '#08090a',
   },
 };
 

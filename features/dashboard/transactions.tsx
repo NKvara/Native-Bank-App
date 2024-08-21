@@ -1,14 +1,14 @@
 import { FlatList, Text, View } from 'react-native';
-import { data } from '@/features/dashboard/helper';
+import { data } from '@/features/dashboard/helper/helper';
 import { Ionicons } from '@expo/vector-icons';
 import ReText from '@/common/shared/ReText';
 import { ColorPick } from '@/color-theme';
-import { GetCurrencyEnum } from '@/features/dashboard/money';
+import { GetCurrencyEnum, getMoneyAmount } from '@/features/dashboard/helper/money';
 import { groupBy } from 'lodash';
 
 // TODO change data when transfer api is done
 
-const DashboardTransfers = () => {
+const DashboardTransactions = () => {
   const color = ColorPick();
 
   const getFilteredData = () => {
@@ -24,17 +24,15 @@ const DashboardTransfers = () => {
 
   const filteredData = getFilteredData();
 
-  console.log(Object.values(Object.values(filteredData)[0]));
-
   const getAmount = (amount: number) => {
-    const flatAmount = Math.abs(amount);
-    return `${amount < 0 ? '' : '+'}${GetCurrencyEnum.GEL}${flatAmount}`;
+    return `${amount < 0 ? '' : '+'}${GetCurrencyEnum.GEL}${getMoneyAmount(Math.abs(amount))}`;
   };
 
   return (
     <View className="w-full bg-rebankBgGrey rounded-lg p-4">
       <ReText className="font-bold text-lg mb-2">Transactions</ReText>
       <FlatList
+        scrollEnabled={false}
         data={Object.values(filteredData)}
         renderItem={({ item, index }) => (
           <View>
@@ -46,6 +44,7 @@ const DashboardTransfers = () => {
               })}
             </ReText>
             <FlatList
+              scrollEnabled={false}
               className="flex py-3 gap-2.5"
               data={Object.values(item)}
               renderItem={({ item: o }) => (
@@ -71,14 +70,14 @@ const DashboardTransfers = () => {
                   </Text>
                 </View>
               )}
-              keyExtractor={(i) => i.toString()}
+              keyExtractor={(_, i) => i.toString()}
             />
           </View>
         )}
-        keyExtractor={(i) => i.toString()}
+        keyExtractor={(_, i) => i.toString()}
       />
     </View>
   );
 };
 
-export default DashboardTransfers;
+export default DashboardTransactions;
