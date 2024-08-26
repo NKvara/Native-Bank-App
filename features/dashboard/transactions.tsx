@@ -1,72 +1,80 @@
 import { FlatList, Text, View } from 'react-native';
-import { data } from '@/features/dashboard/helper/helper';
 import { Ionicons } from '@expo/vector-icons';
 import ReText from '@/common/shared/ReText';
 import { ColorPick } from '@/color-theme';
 import { GetCurrencyEnum, getMoneyAmount } from '@/features/dashboard/helper/money';
-import { groupBy } from 'lodash';
+import { useTransactionList } from '@/features/dashboard/api/transactionList';
+import { getTransactions } from '@/common/helper/getTransactions';
+import moment from 'moment';
 
 // TODO change data when transfer api is done
 
 const DashboardTransactions = () => {
   const color = ColorPick();
+  const rawTransactions = useTransactionList();
 
-  const getFilteredData = () => {
-    const sortedData = data.sort(function (a, b) {
-      return Number(b.date) - Number(a.date);
-    });
-
-    return groupBy(
-      sortedData.filter((date) => date),
-      'date'
-    );
+  const getAmount = ({ amount, direction }: { amount: number; direction: number }) => {
+    return `${direction <= 0 ? '-' : ''}${getMoneyAmount(Math.abs(amount))}${GetCurrencyEnum.GEL}`;
   };
 
-  const filteredData = getFilteredData();
+  // TODO add skeleton
 
-  const getAmount = (amount: number) => {
-    return `${amount < 0 ? '' : '+'}${GetCurrencyEnum.GEL}${getMoneyAmount(Math.abs(amount))}`;
-  };
+  if (rawTransactions.isFetching || rawTransactions.isLoading) {
+    return <ReText>Loading...</ReText>;
+  }
+
+  if (rawTransactions.isError) {
+    return <ReText>Error</ReText>;
+  }
+
+  const groupedTransactions = getTransactions(rawTransactions.data);
 
   return (
     <View className="w-full bg-rebankBgGrey rounded-lg p-4">
       <ReText className="font-bold text-lg mb-2">Transactions</ReText>
       <FlatList
         scrollEnabled={false}
-        data={Object.values(filteredData)}
+        data={Object.values(groupedTransactions)}
         renderItem={({ item, index }) => (
           <View>
             <ReText className="font-semibold opacity-60 text-sm">
-              {new Date(Number(Object.keys(filteredData)[index])).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
+              {moment(Object.keys(groupedTransactions)[index]).fromNow()}
             </ReText>
             <FlatList
               scrollEnabled={false}
-              className="flex py-3 gap-2.5"
+              className="flex py-3 gap-6"
               data={Object.values(item)}
               renderItem={({ item: o }) => (
-                <View className="flex-row w-full justify-between items-center">
-                  <View className="flex-row items-center gap-2">
-                    <View className="bg-rebankDimGrey p-2 rounded-full">
+                <View className="flex-row w-full justify-between gap-2">
+                  <View className="flex-row items-center gap-2 flex-1">
+                    <View className="p-2 rounded-full bg-rebankDimGrey">
                       <Ionicons
-                        name={o.amount < 0 ? 'arrow-up' : 'arrow-down'}
-                        size={24}
-                        color={o.amount < 0 ? '#F54F4F' : '#3ABE70'}
+                        name={o.direction <= 0 ? 'arrow-up' : 'arrow-down'}
+                        size={20}
+                        color={o.direction <= 0 ? '#F54F4F' : '#3ABE70'}
                       />
                     </View>
-                    <View>
-                      <ReText className="font-semibold">{o.title}</ReText>
-                      <ReText className="text-rebankGrey">{o.reason}</ReText>
+                    <View className="flex-shrink w-full gap-1">
+                      <ReText
+                        numberOfLines={1}
+                        className="font-semibold"
+                      >
+                        {o.title}
+                      </ReText>
+                      <ReText
+                        numberOfLines={1}
+                        className="text-rebankGrey text-xs"
+                      >
+                        {o.description}
+                      </ReText>
                     </View>
                   </View>
                   <Text
-                    className="font-bold"
-                    style={{ color: o.amount < 0 ? color['--color-rebankPrimary'] : '#3ABE70' }}
+                    className="font-bold w-fit min-w-16 text-right"
+                    numberOfLines={1}
+                    style={{ color: o.direction <= 0 ? color['--color-rebankPrimary'] : '#3ABE70' }}
                   >
-                    {getAmount(o.amount)}
+                    {getAmount({ amount: o.amount, direction: o.direction })}
                   </Text>
                 </View>
               )}

@@ -9,7 +9,7 @@ interface ButtonProps extends TouchableOpacityProps {
 const ReButton = ({ name, isLoading, ...props }: ButtonProps) => {
   return (
     <TouchableOpacity
-      className="flex justify-center flex-row gap-4 items-center w-full h-14 rounded-xl bg-rebankYellow disabled:opacity-20 disabled:bg-rebankPurple"
+      className="flex justify-center flex-row gap-4 items-center w-full h-14 rounded-xl bg-rebankBrightPurple disabled:opacity-20 disabled:bg-rebankPurple"
       {...props}
     >
       {isLoading && <ActivityIndicator color="black" />}

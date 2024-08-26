@@ -12,7 +12,7 @@ export const AxiosProvider = ({ children }: { children: ReactElement }) => {
   useEffect(() => {
     const beforeRequest = (config: InternalAxiosRequestConfig) => {
       if (session) {
-        config.baseURL = 'http://172.30.12.26:10000/api/';
+        config.baseURL = 'http://172.30.12.26:10000/api';
         config.headers.set('Content-Type', 'application/json');
         config.headers.set('Authorization', `Bearer ${session}`);
       }

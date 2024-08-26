@@ -9,6 +9,7 @@ module.exports = {
         rebankPrimary: 'var(--color-rebankPrimary)',
         rebankYellow: 'var(--color-rebankYellow)',
         rebankPurple: 'var(--color-rebankPurple)',
+        rebankBrightPurple: 'var(--color-rebankBrightPurple)',
         rebankGrey: 'var(--color-rebankGrey)',
         rebankDimGrey: 'var(--color-rebankDimGrey)',
         rebankBgGrey: 'var(--color-rebankBgGrey)',

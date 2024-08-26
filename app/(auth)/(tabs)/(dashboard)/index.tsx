@@ -2,7 +2,6 @@ import { ScrollView, View } from 'react-native';
 import DashboardHeader from '@/features/dashboard/header';
 import DashboardCards from '@/features/dashboard/cards';
 import DashboardTransactions from '@/features/dashboard/transactions';
-import DashboardTransfer from '@/features/dashboard/transfer';
 import DashboardAmount from '@/features/dashboard/amount';
 
 export default function DashboardScreen() {
@@ -12,7 +11,7 @@ export default function DashboardScreen() {
       <ScrollView className="px-4 pt-8">
         <View className='gap-4 mb-32'>
           <DashboardAmount />
-          <DashboardTransfer />
+          {/* <DashboardTransfer /> */}
           <DashboardCards />
           <DashboardTransactions />
         </View>

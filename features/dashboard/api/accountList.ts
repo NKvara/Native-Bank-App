@@ -42,7 +42,7 @@ export interface AccountList {
 }
 
 const fetchAccountList = async () => {
-  const { data } = await axiosInstance.get<AccountList>('/DashBoard/Account');
+  const { data } = await axiosInstance.get<AccountList>('/DashBoard/Accounts');
   return data;
 };
 

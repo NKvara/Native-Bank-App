@@ -1,8 +1,20 @@
-import { Text } from 'react-native';
+import { Text, TextProps } from 'react-native';
 import { ReactNode } from 'react';
 
-const ReText = ({ children, className }: { children: ReactNode; className?: string }) => {
-  return <Text className={`text-rebankPrimary ${className}`}>{children}</Text>;
+interface props extends TextProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const ReText = ({ children, className, ...props }: props) => {
+  return (
+    <Text
+      className={`text-rebankPrimary ${className}`}
+      {...props}
+    >
+      {children}
+    </Text>
+  );
 };
 
 export default ReText;
