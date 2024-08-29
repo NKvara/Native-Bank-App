@@ -1,5 +1,5 @@
 import Dashboard from '@/features/dashboard';
-import Deposits from '@/features/deposits';
+import Deposits from '@/features/deposits/components';
 import Loans from '@/features/loans';
 import { useState } from 'react';
 import { TouchableOpacity, View, ScrollView } from 'react-native';
