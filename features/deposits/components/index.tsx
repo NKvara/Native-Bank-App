@@ -14,8 +14,8 @@ const Deposits = () => {
   return (
     <View className="gap-4 mt-2">
       <View>
-        <ReText className="text-xl text-center font-semibold">ჯამური თანხა</ReText>
-        <ReText className="text-2xl text-center font-bold">{getMoneyAmount(totalData, '-', Currency.GEL)}</ReText>
+        <ReText className="opacity-70 text-center">Total Balance</ReText>
+        <ReText className="font-bold text-4xl text-center">{getMoneyAmount(totalData, '-', Currency.GEL)}</ReText>
       </View>
       <FlatList
         scrollEnabled={false}
