@@ -1,9 +1,12 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import ScrollList from '@/features/loans/ScrollList';
 
 export default function Loans() {
   return (
     <View>
-      <Text>Deposits</Text>
+      <View className="gap-4">
+        <ScrollList />
+      </View>
     </View>
   );
-};
+}

@@ -1,4 +1,4 @@
-import {TransactionList} from '@/features/dashboard/api/transactionList';
+import {TransactionList} from '@/features/accounts/api/transactionList';
 import { groupBy} from 'lodash';
 
 export const getTransactions = (transactionList?: TransactionList) => {

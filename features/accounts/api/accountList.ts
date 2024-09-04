@@ -1,4 +1,4 @@
-import { Currency } from '@/features/dashboard/helper/money';
+import { Currency } from '@/features/accounts/helper/money';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import axiosInstance from '@/configurations/axios';
 
@@ -27,13 +27,15 @@ export enum ActionType {
 export interface Account {
   id: number;
   accountType: number;
+  accountSubType: number;
   accountIban: string;
   accountName: string;
   actionTypes: ActionType[];
   currency: Currency;
-  consolidatedAmount: number;
-  availableAmount: number;
   balance: number;
+  balanceEquivalent: number;
+  availableBalance: number;
+  availableBalanceEquivalent: number;
   accountCards: Card[];
 }
 

@@ -1,33 +1,33 @@
-import Dashboard from '@/features/dashboard';
+import Accounts from '@/features/accounts';
 import Deposits from '@/features/deposits/components';
 import Loans from '@/features/loans';
 import { useState } from 'react';
 import { TouchableOpacity, View, ScrollView } from 'react-native';
-import DashboardHeader from '@/features/dashboard/header';
 import ReText from '@/common/shared/ReText';
 import { ColorPick } from '@/color-theme';
+import DashboardHeader from '@/features/shared/header';
 
 enum Pages {
-  dashboard = 'dashboard',
+  accounts = 'accounts',
   loans = 'loans',
   deposits = 'deposits',
 }
 
 const Component = ({ currPage }: { currPage: Pages }) => {
   switch (currPage) {
-    case Pages.dashboard:
-      return <Dashboard />;
+    case Pages.accounts:
+      return <Accounts />;
     case Pages.loans:
       return <Loans />;
     case Pages.deposits:
       return <Deposits />;
     default:
-      return <Dashboard />;
+      return <Accounts />;
   }
 };
 
 export default function DashboardScreen() {
-  const [currPage, setCurrPage] = useState(Pages.dashboard);
+  const [currPage, setCurrPage] = useState(Pages.accounts);
   const PageSelectArray = Object.values(Pages);
   const color = ColorPick();
 

@@ -1,5 +1,5 @@
-import { Currency } from '@/features/dashboard/helper/money';
-import { Account } from '@/features/dashboard/api/accountList';
+import { Currency } from '@/features/accounts/helper/money';
+import { Account } from '@/features/accounts/api/accountList';
 import { groupBy } from 'lodash';
 import getProp from '@/common/helper/getProp';
 
@@ -15,10 +15,17 @@ export const getAccounts = (accountList?: Account[]) => {
     return {
       allAccounts: acc,
       mainAccount: getProp(() => acc.find((account) => account.currency === Currency.GEL), acc[0])!,
-      // TODO consolidated amount
-      summedAmount: acc.reduce((prev, cur) => prev + cur.balance, 0),
+      summedAmount: acc.reduce((prev, cur) => prev + cur.availableBalanceEquivalent, 0),
     };
   });
 
   return accounts;
+};
+
+export const getSummedAmount = (accountList?: Account[]) => {
+  const rawAccounts = accountList || [];
+
+  const sum = rawAccounts.reduce((prev, cur) => prev + cur.availableBalanceEquivalent, 0);
+
+  return sum;
 };

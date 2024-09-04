@@ -2,14 +2,14 @@ import { View, Dimensions, Image } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
 import ReText from '@/common/shared/ReText';
-import { Currency, getMoneyAmount } from '@/features/dashboard/helper/money';
+import { Currency, getMoneyAmount } from '@/features/accounts/helper/money';
 import { FontAwesome } from '@expo/vector-icons';
-import { getAccounts } from '@/common/helper/getAccounts';
-import { useAccountList } from '@/features/dashboard/api/accountList';
+import { getAccounts, getSummedAmount } from '@/common/helper/getAccounts';
+import { useAccountList } from '@/features/accounts/api/accountList';
 import { ColorPick } from '@/color-theme';
-import { getImage } from '@/features/dashboard/helper/helper';
+import { getImage } from '@/features/accounts/helper/helper';
 
-const DashboardCards = () => {
+const AccountCards = () => {
   const color = ColorPick();
 
   const carouselRef = useRef<ICarouselInstance>(null);
@@ -19,6 +19,7 @@ const DashboardCards = () => {
   const rawAccounts = useAccountList();
 
   const accounts = getAccounts(rawAccounts.data?.data);
+  const sum = getSummedAmount(rawAccounts.data?.data);
 
   // TODO add skeleton
 
@@ -31,7 +32,11 @@ const DashboardCards = () => {
   }
 
   return (
-    <View>
+    <View className="gap-4">
+      <View className="justify-center items-center gap-1">
+        <ReText className="opacity-70">Total Balance</ReText>
+        <ReText className="font-bold text-4xl">{getMoneyAmount(sum, '-', Currency.GEL)}</ReText>
+      </View>
       <View className="items-center justify-center h-44">
         <Carousel
           ref={carouselRef}
@@ -110,4 +115,4 @@ const DashboardCards = () => {
   );
 };
 
-export default DashboardCards;
+export default AccountCards;

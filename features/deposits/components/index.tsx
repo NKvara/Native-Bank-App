@@ -1,7 +1,7 @@
 import { FlatList, View, Text } from 'react-native';
 import { useDepositList } from '@/features/deposits/api/getList';
 import Card from './helper/card';
-import { Currency, getMoneyAmount } from '@/features/dashboard/helper/money';
+import { Currency, getMoneyAmount } from '@/features/accounts/helper/money';
 import ReText from '@/common/shared/ReText';
 
 const Deposits = () => {

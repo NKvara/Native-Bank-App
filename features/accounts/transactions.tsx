@@ -2,14 +2,14 @@ import { FlatList, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import ReText from '@/common/shared/ReText';
 import { ColorPick } from '@/color-theme';
-import { GetCurrencyEnum, getMoneyAmount } from '@/features/dashboard/helper/money';
-import { useTransactionList } from '@/features/dashboard/api/transactionList';
+import { GetCurrencyEnum, getMoneyAmount } from '@/features/accounts/helper/money';
+import { useTransactionList } from '@/features/accounts/api/transactionList';
 import { getTransactions } from '@/common/helper/getTransactions';
 import moment from 'moment';
 
 // TODO change data when transfer api is done
 
-const DashboardTransactions = () => {
+const AccountTransactions = () => {
   const color = ColorPick();
   const rawTransactions = useTransactionList();
 
@@ -88,4 +88,4 @@ const DashboardTransactions = () => {
   );
 };
 
-export default DashboardTransactions;
+export default AccountTransactions;
