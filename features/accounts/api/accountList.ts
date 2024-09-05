@@ -1,5 +1,5 @@
 import { Currency } from '@/features/accounts/helper/money';
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/configurations/axios';
 
 export const ACCOUNT_LIST_QUERY = 'AccountList';
@@ -48,12 +48,9 @@ const fetchAccountList = async () => {
   return data;
 };
 
-export type AccountListOptions = UseQueryOptions<AccountList, Error, AccountList, string[]>;
-export const useAccountList = (options?: AccountListOptions) => {
+export const useAccountList = () => {
   return useQuery({
     queryKey: [ACCOUNT_LIST_QUERY],
     queryFn: () => fetchAccountList(),
-    staleTime: 1000,
-    ...options,
   });
 };

@@ -1,4 +1,4 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/configurations/axios';
 import { Currency } from '@/features/accounts/helper/money';
 
@@ -24,12 +24,10 @@ const fetchLoanList = async () => {
   return data;
 };
 
-export type LoanListOptions = UseQueryOptions<LoanList, Error, LoanList, string[]>;
-export const useLoanList = (options?: LoanListOptions) => {
+export const useLoanList = () => {
   return useQuery({
-    queryKey: ["LoanList"],
+    queryKey: ['LoanList'],
     queryFn: () => fetchLoanList(),
     staleTime: 1000,
-    ...options,
   });
 };

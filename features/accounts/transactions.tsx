@@ -19,7 +19,7 @@ const AccountTransactions = () => {
 
   // TODO add skeleton
 
-  if (rawTransactions.isFetching || rawTransactions.isLoading) {
+  if (rawTransactions.isLoading) {
     return <ReText>Loading...</ReText>;
   }
 

@@ -10,7 +10,7 @@ const ScrollList = () => {
   const color = ColorPick();
   // TODO Skeleton
 
-  if (loans.isLoading || loans.isFetching) {
+  if (loans.isLoading) {
     return <ReText>Loading...</ReText>;
   }
 

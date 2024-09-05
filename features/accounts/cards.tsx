@@ -23,7 +23,7 @@ const AccountCards = () => {
 
   // TODO add skeleton
 
-  if (rawAccounts.isFetching || rawAccounts.isLoading) {
+  if (rawAccounts.isLoading) {
     return <ReText>Loading...</ReText>;
   }
 
