@@ -7,8 +7,6 @@ import { useTransactionList } from '@/features/accounts/api/transactionList';
 import { getTransactions } from '@/common/helper/getTransactions';
 import moment from 'moment';
 
-// TODO change data when transfer api is done
-
 const AccountTransactions = () => {
   const color = ColorPick();
   const rawTransactions = useTransactionList();
@@ -31,7 +29,6 @@ const AccountTransactions = () => {
 
   return (
     <View className="w-full bg-rebankBgGrey rounded-lg p-4">
-      <ReText className="font-bold text-lg mb-2">Transactions</ReText>
       <FlatList
         scrollEnabled={false}
         data={Object.values(groupedTransactions)}

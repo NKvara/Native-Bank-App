@@ -3,7 +3,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { SessionProvider } from '../context/ctx';
-
+import '../gesture-handler.native';
 import '../global.css';
 import { Slot } from 'expo-router';
 import { ThemeProvider } from '@/common/ThemeProviders';

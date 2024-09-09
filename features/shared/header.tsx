@@ -1,4 +1,4 @@
-import { Image, View } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { ColorPick } from '@/color-theme';
@@ -14,10 +14,7 @@ const DashboardHeader = () => {
       style={{ paddingTop: statusBarHeight }}
     >
       <View className="flex-row justify-between items-center h-12 px-4">
-        <Image
-          source={require('@/assets/images/shared/person.png')}
-          className="w-12 h-12 rounded-full bg-white border border-solid border-rebankBackground"
-        />
+        <View />
         <View className="flex-row gap-4">
           <Ionicons
             color={color['--color-rebankPrimary']}

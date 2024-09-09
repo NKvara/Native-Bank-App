@@ -6,7 +6,7 @@ import AccountOffers from '@/features/accounts/offers';
 export default function Accounts() {
   return (
     <View>
-      <View className="gap-4 mb-32">
+      <View className="gap-4 mb-52">
         <AccountCards />
         <AccountOffers />
         <AccountTransactions />

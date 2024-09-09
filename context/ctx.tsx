@@ -4,8 +4,6 @@ import { useStorageState } from './useStorageState';
 import { router } from 'expo-router';
 import { useVerify } from '@/features/login/api/verify';
 
-// TODO
-
 export enum ScaResponseStatus {
   success = '0',
   otpRequired = '1',
@@ -46,9 +44,6 @@ const AuthContext = createContext<AuthContextType>({
 
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
   const [[isLoading, session], setSession] = useStorageState('session');
-
-  // TODO add /api/User
-
   const mutateSca = useSca();
   const mutateVerify = useVerify();
 

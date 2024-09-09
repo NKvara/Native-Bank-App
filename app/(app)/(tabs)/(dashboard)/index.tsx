@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { TouchableOpacity, View, ScrollView } from 'react-native';
 import ReText from '@/common/shared/ReText';
 import { ColorPick } from '@/color-theme';
-import DashboardHeader from '@/features/shared/header';
 
 enum Pages {
   accounts = 'accounts',
@@ -33,7 +32,6 @@ export default function DashboardScreen() {
 
   return (
     <View className="bg-rebankBackground h-screen">
-      <DashboardHeader />
       <ScrollView className="px-4 pt-4">
         <View className="flex-row justify-between pb-4 gap-4">
           {PageSelectArray.map((o, i) => (

@@ -2,8 +2,6 @@ import { Currency } from '@/features/accounts/helper/money';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/configurations/axios';
 
-export const ACCOUNT_LIST_QUERY = 'AccountList';
-
 export interface Card {
   id: number;
   holder: string;
@@ -50,7 +48,7 @@ const fetchAccountList = async () => {
 
 export const useAccountList = () => {
   return useQuery({
-    queryKey: [ACCOUNT_LIST_QUERY],
+    queryKey: ['AccountList'],
     queryFn: () => fetchAccountList(),
   });
 };

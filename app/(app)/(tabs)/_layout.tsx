@@ -1,10 +1,17 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Tabs } from 'expo-router';
 import { ColorPick } from '@/color-theme';
 import { View } from 'react-native';
+import ReText from '@/common/shared/ReText';
+import { Ionicons } from '@expo/vector-icons';
+import Constants from 'expo-constants';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import DashboardScreen from '@/app/(app)/(tabs)/(dashboard)';
+import TabTwoScreen from '@/app/(app)/(tabs)/two';
+import TabThreeScreen from '@/app/(app)/(tabs)/three';
+import TabFourScreen from '@/app/(app)/(tabs)/four';
+import TabFiveScreen from '@/app/(app)/(tabs)/five';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
@@ -20,15 +27,40 @@ function TabBarIcon(props: {
   );
 }
 
+// const DashboardStack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
 export default function TabLayout() {
   const ColorPicker = ColorPick();
+  const statusBarHeight = Constants.statusBarHeight;
 
   return (
-    <Tabs
+    <Tab.Navigator
       screenOptions={{
-        tabBarShowLabel: false,
-        tabBarActiveTintColor: ColorPicker['--color-rebankPrimary'],
-        headerShown: false,
+        header: (props) => {
+          return (
+            <View
+              className="bg-rebankBgGrey pb-2 border-b-2 border-b-rebankDimGrey"
+              style={{ paddingTop: statusBarHeight }}
+            >
+              <View className="flex-row justify-between items-center h-12 px-4">
+                <ReText className="font-bold capitalize text-lg">{props.route.name}</ReText>
+                <View className="flex-row gap-4">
+                  <Ionicons
+                    color={ColorPicker['--color-rebankPrimary']}
+                    name="qr-code"
+                    size={20}
+                  />
+                  <Ionicons
+                    color={ColorPicker['--color-rebankPrimary']}
+                    name="notifications-outline"
+                    size={20}
+                  />
+                </View>
+              </View>
+            </View>
+          );
+        },
         tabBarStyle: {
           display: 'flex',
           alignItems: 'center',
@@ -42,15 +74,17 @@ export default function TabLayout() {
           height: 52,
           backgroundColor: ColorPicker['--color-inputBackground'],
         },
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: ColorPicker['--color-rebankPrimary'],
         tabBarItemStyle: {
           height: 52,
         },
       }}
     >
-      <Tabs.Screen
-        name="(dashboard)/index"
+      <Tab.Screen
+        name="Dashboard"
+        component={DashboardScreen}
         options={{
-          title: 'Home',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name="home"
@@ -60,10 +94,10 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="two"
+      <Tab.Screen
+        name="Tab Two"
+        component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name="bug"
@@ -73,8 +107,9 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="three"
+      <Tab.Screen
+        name="Tab Three"
+        component={TabThreeScreen}
         options={{
           title: 'Tab Three',
           tabBarIcon: ({ color, focused }) => (
@@ -86,8 +121,9 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
+      <Tab.Screen
         name="four"
+        component={TabFourScreen}
         options={{
           title: 'Tab Four',
           tabBarIcon: ({ color, focused }) => (
@@ -99,8 +135,9 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
+      <Tab.Screen
         name="five"
+        component={TabFiveScreen}
         options={{
           title: 'Tab Five',
           tabBarIcon: ({ color, focused }) => (
@@ -112,6 +149,6 @@ export default function TabLayout() {
           ),
         }}
       />
-    </Tabs>
+    </Tab.Navigator>
   );
 }
