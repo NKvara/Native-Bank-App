@@ -15,10 +15,31 @@ const AccountTransactions = () => {
     return `${direction <= 0 ? '-' : ''}${getMoneyAmount(Math.abs(amount))}${GetCurrencyEnum.GEL}`;
   };
 
-  // TODO add skeleton
-
   if (rawTransactions.isLoading) {
-    return <ReText>Loading...</ReText>;
+    return (
+      <View className="w-full bg-rebankBgGrey p-4 rounded-lg">
+        <View className="bg-white w-16 h-4 mb-2 rounded-md" />
+        {Array.from({ length: 7 }, (_, i) => (
+          <View
+            key={i}
+            className="flex-row
+          justify-between
+          items-center
+          py-3
+          "
+          >
+            <View className="gap-4 flex-row items-center">
+              <View className="size-12 rounded-full bg-white" />
+              <View className="gap-2">
+                <View className="h-2 w-12 bg-white rounded-sm" />
+                <View className="h-4 w-28 bg-white rounded-sm" />
+              </View>
+            </View>
+            <View className="h-4 w-28 bg-white rounded-sm" />
+          </View>
+        ))}
+      </View>
+    );
   }
 
   if (rawTransactions.isError) {
