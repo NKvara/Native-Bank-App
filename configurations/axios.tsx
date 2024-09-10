@@ -10,6 +10,7 @@ export const AxiosProvider = ({ children }: { children: ReactElement }) => {
   const [tokenIsSet, setTokenIsSet] = useState(false);
 
   useEffect(() => {
+    if (isLoading) return;
     const beforeRequest = (config: InternalAxiosRequestConfig) => {
       if (session) {
         config.baseURL = 'http://172.30.12.26:10000/api';

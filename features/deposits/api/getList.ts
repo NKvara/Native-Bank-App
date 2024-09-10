@@ -1,5 +1,6 @@
-import axiosInstance from '@/configurations/axios';
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { useSession } from '@/context/ctx';
 
 export interface DepositList {
   id: number;
@@ -16,15 +17,22 @@ interface DepositResponse {
   data: DepositList[];
 }
 
-export const getList = async () => {
-  const response = await axiosInstance.get<DepositResponse>('/DashBoard/Deposites');
+export const getList = async ({ session }: { session: string | null | undefined }) => {
+  const response = await axios.get<DepositResponse>('/DashBoard/Deposites', {
+    baseURL: 'http://172.30.12.26:10000/api',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session}`,
+    },
+  });
 
   return response.data;
 };
 
 export const useDepositList = () => {
+  const { session } = useSession();
   return useQuery({
-    queryKey: ['depositList'],
-    queryFn: getList,
+    queryKey: ['depositList', session],
+    queryFn: () => getList({ session }),
   });
 };

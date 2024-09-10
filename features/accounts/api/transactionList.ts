@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import axiosInstance from '@/configurations/axios';
+import { useSession } from '@/context/ctx';
+import axios from 'axios';
 
 export interface Transaction {
   id: number;
@@ -16,14 +17,21 @@ export interface Transaction {
 export interface TransactionList {
   data: Transaction[];
 }
-const fetchTransactionList = async () => {
-  const { data } = await axiosInstance.get<TransactionList>('/DashBoard/Transfers');
+const fetchTransactionList = async ({ session }: { session: string | null | undefined }) => {
+  const { data } = await axios.get<TransactionList>('/DashBoard/Transfers', {
+    baseURL: 'http://172.30.12.26:10000/api',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session}`,
+    },
+  });
   return data;
 };
 
 export const useTransactionList = () => {
+  const { session } = useSession();
   return useQuery({
-    queryKey: ['Transactions'],
-    queryFn: () => fetchTransactionList(),
+    queryKey: ['Transactions', session],
+    queryFn: () => fetchTransactionList({ session }),
   });
 };

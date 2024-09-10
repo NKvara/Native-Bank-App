@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import axiosInstance from '@/configurations/axios';
+import { useSession } from '@/context/ctx';
+import axios from 'axios';
 
 export interface Offer {
   id: number;
@@ -23,14 +24,21 @@ export interface Offer {
 export interface OfferList {
   data: Offer[];
 }
-const fetchOfferList = async () => {
-  const { data } = await axiosInstance.get<OfferList>('/DashBoard/Offers');
+const fetchOfferList = async ({ session }: { session: string | null | undefined }) => {
+  const { data } = await axios.get<OfferList>('/DashBoard/Offers', {
+    baseURL: 'http://172.30.12.26:10000/api',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session}`,
+    },
+  });
   return data;
 };
 
 export const useOfferList = () => {
+  const { session } = useSession();
   return useQuery({
-    queryKey: ['Offers'],
-    queryFn: () => fetchOfferList(),
+    queryKey: ['Offers', session],
+    queryFn: () => fetchOfferList({ session }),
   });
 };
