@@ -17,8 +17,8 @@ const AccountTransactions = () => {
 
   if (rawTransactions.isLoading) {
     return (
-      <View className="w-full bg-rebankBgGrey p-4 rounded-lg">
-        <View className="bg-white w-16 h-4 mb-2 rounded-md" />
+      <View className="w-full  p-4 rounded-lg">
+        <View className="bg-rebankBgGrey w-16 h-4 mb-2 rounded-md" />
         {Array.from({ length: 7 }, (_, i) => (
           <View
             key={i}
@@ -29,13 +29,13 @@ const AccountTransactions = () => {
           "
           >
             <View className="gap-4 flex-row items-center">
-              <View className="size-12 rounded-full bg-white" />
+              <View className="size-12 rounded-full bg-rebankBgGrey" />
               <View className="gap-2">
-                <View className="h-2 w-12 bg-white rounded-sm" />
-                <View className="h-4 w-28 bg-white rounded-sm" />
+                <View className="h-2 w-12 bg-rebankBgGrey rounded-sm" />
+                <View className="h-4 w-28 bg-rebankBgGrey rounded-sm" />
               </View>
             </View>
-            <View className="h-4 w-28 bg-white rounded-sm" />
+            <View className="h-4 w-28 bg-rebankBgGrey rounded-sm" />
           </View>
         ))}
       </View>

@@ -9,7 +9,7 @@ const AccountOffers = () => {
   if (offerList.isLoading) {
     return (
       <View>
-        <View className="font-bold text-lg pl-4 h-4 w-16 rounded-md bg-white" />
+        <View className="font-bold text-lg pl-4 h-4 w-16 rounded-md bg-rebankBgGrey" />
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -20,10 +20,10 @@ const AccountOffers = () => {
               key={item.index}
               className="flex-row w-80 h-28 rounded-xl bg-rebankBgGrey mx-3"
             >
-              <View className="w-24 h-full rounded-md bg-white" />
+              <View className="w-24 h-full rounded-md bg-rebankBgGrey" />
               <View className="w-2/3 p-4 gap-2">
-                <View className="w-12 h-2 bg-white rounded-sm" />
-                <View className="w-24 h-4 bg-white rounded-md" />
+                <View className="w-12 h-2 bg-rebankBgGrey rounded-sm" />
+                <View className="w-24 h-4 bg-rebankBgGrey rounded-md" />
               </View>
             </View>
           )}
