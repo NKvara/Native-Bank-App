@@ -18,7 +18,7 @@ const AccountOffers = () => {
           renderItem={(item) => (
             <View
               key={item.index}
-              className="flex-row w-80 h-28 rounded-xl bg-rebankBgGrey mx-3"
+              className="flex-row w-80 h-28 rounded-xl bg-rebankDimGrey mx-3"
             >
               <View className="w-24 h-full rounded-md bg-rebankBgGrey" />
               <View className="w-2/3 p-4 gap-2">
