@@ -1,31 +1,13 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { ColorPick } from '@/color-theme';
 import { View } from 'react-native';
 import ReText from '@/common/shared/ReText';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import DashboardScreen from '@/app/(app)/(tabs)/(dashboard)';
-import TabTwoScreen from '@/app/(app)/(tabs)/two';
 import TabThreeScreen from '@/app/(app)/(tabs)/three';
-import TabFourScreen from '@/app/(app)/(tabs)/four';
-import TabFiveScreen from '@/app/(app)/(tabs)/five';
-
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-  focused: boolean;
-}) {
-  return (
-    <View className="items-center">
-      <FontAwesome
-        size={24}
-        {...props}
-      />
-    </View>
-  );
-}
+import TransferLayout from '@/app/(app)/(tabs)/(transfers)/_layout';
 
 // const DashboardStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -85,25 +67,37 @@ export default function TabLayout() {
         name="Dashboard"
         component={DashboardScreen}
         options={{
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name="home"
+          tabBarIcon: ({ color }) => (
+            <Ionicons
+              name="home-sharp"
+              size={24}
               color={color}
-              focused={focused}
             />
           ),
         }}
       />
       <Tab.Screen
-        name="Tab Two"
-        component={TabTwoScreen}
+        name="Transfers"
+        component={TransferLayout}
         options={{
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name="bug"
-              color={color}
-              focused={focused}
-            />
+            <View
+              style={{
+                borderRadius: 100,
+                height: 40,
+                width: 40,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: focused ? color : ColorPicker['--color-inputBackground'],
+              }}
+            >
+              <AntDesign
+                name="retweet"
+                size={24}
+                color={focused ? ColorPicker['--color-inputBackground'] : color}
+              />
+            </View>
           ),
         }}
       />
@@ -112,39 +106,11 @@ export default function TabLayout() {
         component={TabThreeScreen}
         options={{
           title: 'Tab Three',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name="grav"
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="view-grid-plus-outline"
+              size={24}
               color={color}
-              focused={focused}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="four"
-        component={TabFourScreen}
-        options={{
-          title: 'Tab Four',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name="play"
-              color={color}
-              focused={focused}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="five"
-        component={TabFiveScreen}
-        options={{
-          title: 'Tab Five',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name="cog"
-              color={color}
-              focused={focused}
             />
           ),
         }}

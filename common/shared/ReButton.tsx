@@ -4,12 +4,13 @@ import React from 'react';
 interface ButtonProps extends TouchableOpacityProps {
   name: string;
   isLoading?: boolean;
+  className: string;
 }
 
-const ReButton = ({ name, isLoading, ...props }: ButtonProps) => {
+const ReButton = ({ name, isLoading, className, ...props }: ButtonProps) => {
   return (
     <TouchableOpacity
-      className="flex justify-center flex-row gap-4 items-center w-full h-14 rounded-xl bg-rebankBrightPurple disabled:opacity-20 disabled:bg-rebankPurple"
+      className={`flex justify-center flex-row gap-4 items-center w-full h-14 rounded-xl bg-rebankBrightPurple disabled:opacity-20 disabled:bg-rebankPurple ${className}`}
       {...props}
     >
       {isLoading && <ActivityIndicator color="black" />}
