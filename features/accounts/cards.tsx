@@ -21,10 +21,14 @@ const AccountCards = () => {
   const accounts = getAccounts(rawAccounts.data?.data);
   const sum = getSummedAmount(rawAccounts.data?.data);
 
-  // TODO add skeleton
-
   if (rawAccounts.isLoading) {
-    return <ReText>Loading...</ReText>;
+    return (
+      <View className="gap-4 items-center w-full">
+        <ReText className="opacity-70">Total Balance</ReText>
+        <View className="w-44 h-6 rounded-md bg-rebankBgGrey" />
+        <View className="h-44 w-full  rounded-2xl bg-rebankBgGrey" />
+      </View>
+    );
   }
 
   if (rawAccounts.isError) {
