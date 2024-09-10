@@ -8,10 +8,32 @@ import { LinearGradient } from 'expo-linear-gradient';
 const ScrollList = () => {
   const loans = useLoanList();
   const color = ColorPick();
-  // TODO Skeleton
 
   if (loans.isLoading) {
-    return <ReText>Loading...</ReText>;
+    return (
+      <View>
+        <FlatList
+          scrollEnabled={false}
+          ItemSeparatorComponent={() => <View className="h-6" />}
+          data={Array.from({ length: 4 })}
+          renderItem={() => (
+            <View className="bg-rebankDimGrey rounded-2xl border border-rebankDimGrey p-2 gap-4">
+              <View className="mb-2">
+                <View className="w-12 h-2 bg-rebankBgGrey rounded-sm" />
+              </View>
+              <View className="bg-rebankDimGrey h-4 flex-row rounded-full">
+                <View className="w-full h-2 bg-rebankBgGrey rounded-sm" />
+              </View>
+              <View className="flex-row">
+                <View>
+                  <View className="w-12 h-2 bg-rebankBgGrey rounded-sm" />
+                </View>
+              </View>
+            </View>
+          )}
+        />
+      </View>
+    );
   }
 
   if (loans.isError) {
