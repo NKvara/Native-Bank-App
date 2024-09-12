@@ -102,7 +102,7 @@ export default function TabLayout() {
         }}
       />
       <Tab.Screen
-        name="Tab Three"
+        name="Parameters"
         component={TabThreeScreen}
         options={{
           title: 'Tab Three',
