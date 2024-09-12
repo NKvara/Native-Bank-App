@@ -15,6 +15,10 @@ export interface paymentRouteType extends RouteProp<ParamListBase> {
     paymentGroupTitle?: string;
     paymentGroupIconIndex?: number;
     paymentProductTitle?: string;
+    paymentProductId?: string;
+    paymentProductCustomer?: string;
+    paymentProductDebt?: number;
+    paymentAccountID?: number;
   };
 }
 
@@ -53,6 +57,7 @@ const PaymentProducts = () => {
                     paymentGroupTitle: route.params.paymentGroupTitle,
                     paymentGroupIconIndex: route.params.paymentGroupIconIndex,
                     paymentProductTitle: item.nameLat,
+                    paymentProductId: item.productId,
                   },
                   merge: true,
                 } as never);

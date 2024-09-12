@@ -3,39 +3,26 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from '@/context/ctx';
 
-export interface Card {
-  id: number;
-  holder: string;
-  cardNumber: string;
-  designId: number;
-  productId: number;
-}
-
-export enum ActionType {
-  Transfer = 'Transfer',
-  Statement = 'Statement',
-  Cards = 'Cards',
-  Details = 'Details',
-  TopUpTopCard = 'TopUpTopCard',
-  ChangeTerm = 'ChangeTerm',
-  ResetPin = 'ResetPin',
-  Wallet = 'Wallet',
-  Installments = 'Installments',
-}
-
 export interface Account {
   id: number;
-  accountType: number;
-  accountSubType: number | null;
   accountIban: string;
   accountName: string;
-  actionTypes: ActionType[];
-  currency: Currency;
+  accountCcy: Currency;
   balance: number;
   balanceEquivalent: number;
   availableBalance: number;
   availableBalanceEquivalent: number;
-  accountCards: Card[] | null;
+  accountType: number;
+  accountSubType: number | null;
+  accountCards: AccountCard[] | null;
+}
+
+export interface AccountCard {
+  id: number;
+  holder: string;
+  cardNumber: string;
+  designId: string;
+  productId: number;
 }
 
 export interface AccountList {
@@ -43,7 +30,7 @@ export interface AccountList {
 }
 
 const fetchAccountList = async ({ session }: { session: string | null | undefined }) => {
-  const { data } = await axios.get<AccountList>('/DashBoard/Accounts', {
+  const { data } = await axios.get<AccountList>('/Payments/Accounts', {
     baseURL: 'http://172.30.12.26:10000/api',
     headers: {
       'Content-Type': 'application/json',
@@ -53,10 +40,10 @@ const fetchAccountList = async ({ session }: { session: string | null | undefine
   return data;
 };
 
-export const useAccountList = () => {
+export const usePaymentAccountList = () => {
   const { session } = useSession();
   return useQuery({
-    queryKey: ['AccountList', session],
+    queryKey: ['PaymentAccountList', session],
     queryFn: () => fetchAccountList({ session }),
   });
 };

@@ -12,6 +12,7 @@ const AccountOffers = () => {
         <View className="font-bold text-lg pl-4 h-4 w-16 rounded-md bg-rebankBgGrey" />
         <FlatList
           horizontal
+          scrollEnabled={false}
           showsHorizontalScrollIndicator={false}
           className="mx-[-10px] pt-2"
           data={[{ item: 1 }, { item: 2 }]}
