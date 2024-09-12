@@ -59,7 +59,7 @@ const LoginBody = () => {
           id="otpCode"
           name="otpCode"
           control={control}
-          placeholder="otp"
+          placeholder="OTP"
           startAdornment="keypad"
           keyboardType="default"
           maxLength={4}

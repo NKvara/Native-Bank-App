@@ -27,6 +27,7 @@ const PaymentAccounts = () => {
 
   return (
     <ReScrollView scroll={false}>
+      <ReText>From Account</ReText>
       <FlatList
         data={rawAccounts.data.data}
         renderItem={({ item }) => (

@@ -18,6 +18,7 @@ export interface paymentRouteType extends RouteProp<ParamListBase> {
     paymentProductId?: string;
     paymentProductCustomer?: string;
     paymentProductDebt?: number;
+    paymentIdentifier?: number;
     paymentAccountID?: number;
   };
 }

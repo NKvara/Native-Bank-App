@@ -13,7 +13,7 @@ const Login = () => {
         <LinearGradient
           start={{ x: 1, y: 1 }}
           end={{ x: 0, y: 0 }}
-          colors={colorScheme === 'light' ? ['#e4ecff', '#fff6ee'] : ['#10244e', '#331c07']}
+          colors={colorScheme === 'light' ? ['#e4ecff', '#fff6ee'] : ['#071536', '#331c07']}
         >
           <View className="h-full flex-col justify-between">
             <LoginHeader />

@@ -1,4 +1,4 @@
-import { View, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, Text } from 'react-native';
 import React from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { paymentRouteType } from '@/features/payments/components/payment/PaymentProducts';
@@ -70,13 +70,18 @@ const PaymentVerify = () => {
                 </View>
                 <View>
                   <ReText className="text-sm opacity-70">Debt:</ReText>
-                  <ReText className="text-sm">{getMoneyAmount(getValues('debt'), '-', Currency.GEL)}</ReText>
+                  <Text
+                    className="text-sm"
+                    style={{ color: getValues('debt') > 0 ? '#F54F4F' : '#3ABE70' }}
+                  >
+                    {getMoneyAmount(getValues('debt'), '-', Currency.GEL)}
+                  </Text>
                 </View>
               </View>
             )}
           </View>
           <ReButton
-            name={getValues('debt') < 0 ? 'Check' : 'Pay'}
+            name={'Next'}
             className="bg-rebankPrimary"
             disabled={debtVerify.isPending || !getValues('identifier')}
             textColor={color['--color-rebankBackground']}
@@ -105,6 +110,7 @@ const PaymentVerify = () => {
                     paymentProductCustomer: getValues('info'),
                     paymentProductDebt: getValues('debt'),
                     paymentProductAccountID: 0,
+                    paymentIdentifier: getValues('identifier'),
                   },
                 } as never);
               }

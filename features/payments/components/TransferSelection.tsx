@@ -73,7 +73,9 @@ const TransferSelection = () => {
                 onPress={() => navigate.navigate(item.link as never)}
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4 }}
               >
-                <View className="bg-rebankDimGrey p-4 rounded-2xl">{item.icon(color['--color-rebankPrimary'])}</View>
+                <View className="bg-rebankDimGrey justify-center items-center p-4 rounded-full aspect-square h-16">
+                  {item.icon(color['--color-rebankPrimary'])}
+                </View>
                 <ReText className="text-sm text-center h-10">{item.name}</ReText>
               </TouchableOpacity>
             </View>

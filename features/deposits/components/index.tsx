@@ -1,4 +1,4 @@
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { useDepositList } from '@/features/deposits/api/getList';
 import Card from './helper/card';
 import { Currency, getMoneyAmount } from '@/features/accounts/helper/money';
@@ -9,7 +9,20 @@ const Deposits = () => {
 
   const totalData = deposit.data?.data.reduce((acc, curr) => acc + curr.amount, 0);
 
-  if (deposit.isLoading) return <Text>Loading...</Text>;
+  if (deposit.isLoading)
+    return (
+      <View className="gap-4 mt-2">
+        <View className="items-center gap-2">
+          <View className="h-4 w-32 bg-rebankDimGrey rounded-xl" />
+          <View className="h-8 w-60 bg-rebankDimGrey rounded-xl" />
+        </View>
+        <FlatList
+          scrollEnabled={false}
+          data={[{}, {}, {}]}
+          renderItem={() => <View className="bg-rebankDimGrey h-36 mb-4 rounded-2xl" />}
+        />
+      </View>
+    );
 
   return (
     <View className="gap-4 mt-2">

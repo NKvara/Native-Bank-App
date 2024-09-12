@@ -13,16 +13,16 @@ const PaymentSuccess = () => {
   return (
     <ReScrollView scroll={false}>
       <View className="mt-56 items-center gap-4">
-        <View className="bg-rebankBgGrey p-6 rounded-xl">
+        <View className="bg-rebankBgGrey p-6 rounded-full">
           <FontAwesome5
             name="check"
             size={28}
             color={color['--color-rebankPrimary']}
           />
         </View>
-        <ReText className="font-bold text-lg">Transaction Successful</ReText>
+        <ReText className="font-bold text-lg">Transaction was successful</ReText>
         <ReButton
-          name="Return"
+          name="Home"
           className="bg-rebankPrimary"
           textColor={color['--color-rebankBackground']}
           onPress={() => {

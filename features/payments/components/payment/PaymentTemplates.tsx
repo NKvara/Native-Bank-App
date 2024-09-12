@@ -23,7 +23,7 @@ const PaymentTemplates = () => {
         </TouchableWithoutFeedback>
       </View>
       <View className="w-full justify-center items-center mt-60 gap-4">
-        <View className="bg-rebankBgGrey p-6 rounded-xl">
+        <View className="bg-rebankBgGrey p-6 rounded-full">
           <MaterialCommunityIcons
             name="clipboard-search-outline"
             size={48}

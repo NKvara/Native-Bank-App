@@ -10,7 +10,7 @@ interface ThemeProviderProps {
 export const ThemeContext = createContext<{
   theme: 'light' | 'dark';
 }>({
-  theme: 'light',
+  theme: 'dark',
 });
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {

@@ -97,6 +97,7 @@ const PaymentPay = () => {
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View className="p-4 gap-4 bg-rebankBackground h-screen">
+          <ReText>From Account</ReText>
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => {
@@ -126,10 +127,17 @@ const PaymentPay = () => {
                 <ReText className="text-sm">{route.params.paymentProductCustomer}</ReText>
               </View>
               <View>
+                <ReText className="text-sm opacity-70">Identifier:</ReText>
+                <ReText className="text-sm">{route.params.paymentIdentifier}</ReText>
+              </View>
+              <View>
                 <ReText className="text-sm opacity-70">Debt:</ReText>
-                <ReText className="text-sm">
+                <Text
+                  className="text-sm"
+                  style={{ color: route.params.paymentProductDebt! > 0 ? '#F54F4F' : '#3ABE70' }}
+                >
                   {getMoneyAmount(route.params.paymentProductDebt, '-', Currency.GEL)}
-                </ReText>
+                </Text>
               </View>
               <Input
                 name="amount"

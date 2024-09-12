@@ -39,7 +39,7 @@ export default function PaymentLayout() {
       <PaymentListStack.Screen
         name="Payment Accounts"
         component={PaymentAccounts}
-        options={{ presentation: 'modal' }}
+        options={{ presentation: 'transparentModal' }}
       />
       <PaymentListStack.Screen
         name="Payment Success"

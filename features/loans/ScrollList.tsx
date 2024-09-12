@@ -17,16 +17,16 @@ const ScrollList = () => {
           ItemSeparatorComponent={() => <View className="h-6" />}
           data={Array.from({ length: 4 })}
           renderItem={() => (
-            <View className="bg-rebankDimGrey rounded-2xl border border-rebankDimGrey p-2 gap-4">
+            <View className="bg-rebankBgGrey rounded-2xl border border-rebankDimGrey p-2 gap-4">
               <View className="mb-2">
                 <View className="w-12 h-2 bg-rebankBgGrey rounded-sm" />
               </View>
               <View className="bg-rebankDimGrey h-4 flex-row rounded-full">
-                <View className="w-full h-2 bg-rebankBgGrey rounded-sm" />
+                <View className="w-full h-2 bg-rebankDimGrey rounded-sm" />
               </View>
               <View className="flex-row">
                 <View>
-                  <View className="w-12 h-2 bg-rebankBgGrey rounded-sm" />
+                  <View className="w-12 h-2 bg-rebankDimGrey rounded-sm" />
                 </View>
               </View>
             </View>
