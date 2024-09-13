@@ -2,12 +2,12 @@ import { View, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboar
 import React from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { paymentRouteType } from '@/features/payments/components/payment/PaymentProducts';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { paymentCategoriesID } from '@/features/payments/helper/paymentCategoriesID';
 import { ColorPick } from '@/color-theme';
 import Input from '@/common/shared/Input';
 import { useForm } from 'react-hook-form';
-import ReButton from '@/common/shared/ReButton';
+import PashButton from '@/common/shared/PashButton';
 import { useDebtVerify } from '@/features/payments/api/debtVerify';
 import { useSession } from '@/context/ctx';
 import { getMoneyAmount, Currency } from '@/features/accounts/helper/money';
@@ -38,20 +38,20 @@ const PaymentVerify = () => {
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View className="p-4 gap-4 bg-rebankBackground h-screen">
-          <View className="bg-rebankBgGrey p-4 rounded-2xl gap-4">
+        <View className="p-4 gap-4 bg-pashaBackground h-screen">
+          <View className="bg-pashaBgGrey p-4 rounded-2xl gap-4">
             <View className="flex-row gap-4 py-2 h-20">
-              <View className="h-full aspect-square justify-center items-center bg-rebankDimGrey rounded-full">
-                {paymentCategoriesID[route.params.paymentGroupIconIndex!].icon(color['--color-rebankPrimary'])}
+              <View className="h-full aspect-square justify-center items-center bg-pashaDimGrey rounded-full">
+                {paymentCategoriesID[route.params.paymentGroupIconIndex!].icon(color['--color-pashaPrimary'])}
               </View>
               <View className="justify-around">
-                <ReText
+                <PashText
                   numberOfLines={2}
                   className="font-bold"
                 >
                   {route.params.paymentProductTitle}
-                </ReText>
-                <ReText className="text-sm text-rebankGrey">{route.params.paymentGroupTitle}</ReText>
+                </PashText>
+                <PashText className="text-sm text-pashaGrey">{route.params.paymentGroupTitle}</PashText>
               </View>
             </View>
             <Input
@@ -65,11 +65,11 @@ const PaymentVerify = () => {
             {!!getValues('info') && (
               <View className="gap-4">
                 <View>
-                  <ReText className="text-sm opacity-70">Customer Info:</ReText>
-                  <ReText className="text-sm">{getValues('info')}</ReText>
+                  <PashText className="text-sm opacity-70">Customer Info:</PashText>
+                  <PashText className="text-sm">{getValues('info')}</PashText>
                 </View>
                 <View>
-                  <ReText className="text-sm opacity-70">Debt:</ReText>
+                  <PashText className="text-sm opacity-70">Debt:</PashText>
                   <Text
                     className="text-sm"
                     style={{ color: getValues('debt') > 0 ? '#F54F4F' : '#3ABE70' }}
@@ -80,11 +80,11 @@ const PaymentVerify = () => {
               </View>
             )}
           </View>
-          <ReButton
+          <PashButton
             name={'Next'}
-            className="bg-rebankPrimary"
+            className="bg-pashaPrimary"
             disabled={debtVerify.isPending || !getValues('identifier')}
-            textColor={color['--color-rebankBackground']}
+            textColor={color['--color-pashaBackground']}
             onPress={() => {
               if (getValues('debt') < 0) {
                 debtVerify.mutate(

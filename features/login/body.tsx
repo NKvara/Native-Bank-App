@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import React from 'react';
-import ReButton from '@/common/shared/ReButton';
+import PashButton from '@/common/shared/PashButton';
 import Input from '@/common/shared/Input';
 import { useForm } from 'react-hook-form';
 import { useSession } from '@/context/ctx';
@@ -43,7 +43,7 @@ const LoginBody = () => {
         control={control}
         id="password"
         placeholder="Password"
-        secureTextEntry={!getValues('passwordVisible')}
+        secuPashTextEntry={!getValues('passwordVisible')}
         startAdornment="lock-closed-outline"
         keyboardType="default"
         editable={!getValues('otpSessionId')}
@@ -66,7 +66,7 @@ const LoginBody = () => {
         />
       )}
 
-      <ReButton
+      <PashButton
         name="Login"
         disabled={
           !getValues('username') ||

@@ -3,7 +3,7 @@ import Deposits from '@/features/deposits/components';
 import Loans from '@/features/loans';
 import { useState } from 'react';
 import { TouchableOpacity, View, ScrollView } from 'react-native';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { ColorPick } from '@/color-theme';
 
 enum Pages {
@@ -31,7 +31,7 @@ export default function DashboardScreen() {
   const color = ColorPick();
 
   return (
-    <View className="bg-rebankBackground h-screen">
+    <View className="bg-pashaBackground h-screen">
       <ScrollView className="px-4 pt-4">
         <View className="flex-row justify-between pb-4 gap-4">
           {PageSelectArray.map((o, i) => (
@@ -44,11 +44,11 @@ export default function DashboardScreen() {
               <View
                 style={{
                   backgroundColor:
-                    currPage === o ? color['--color-rebankBrightPurple'] : color['--color-rebankDimGrey'],
+                    currPage === o ? color['--color-pashaBrightPurple'] : color['--color-pashaDimGrey'],
                 }}
                 className="w-full p-3 rounded-3xl"
               >
-                <ReText className="font-bold capitalize text-center">{o}</ReText>
+                <PashText className="font-bold capitalize text-center">{o}</PashText>
               </View>
             </TouchableOpacity>
           ))}

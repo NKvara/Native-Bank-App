@@ -8,10 +8,10 @@ interface ButtonProps extends TouchableOpacityProps {
   textColor?: string;
 }
 
-const ReButton = ({ name, isLoading, className = '', textColor, ...props }: ButtonProps) => {
+const PashButton = ({ name, isLoading, className = '', textColor, ...props }: ButtonProps) => {
   return (
     <TouchableOpacity
-      className={`flex justify-center flex-row gap-4 items-center w-full h-14 rounded-xl bg-rebankBrightPurple disabled:opacity-20 disabled:bg-rebankPurple ${className}`}
+      className={`flex justify-center flex-row gap-4 items-center w-full h-14 rounded-xl bg-pashaBrightPurple disabled:opacity-20 disabled:bg-pashaPurple ${className}`}
       {...props}
     >
       {isLoading && <ActivityIndicator color={textColor ? textColor : 'black'} />}
@@ -25,4 +25,4 @@ const ReButton = ({ name, isLoading, className = '', textColor, ...props }: Butt
   );
 };
 
-export default ReButton;
+export default PashButton;

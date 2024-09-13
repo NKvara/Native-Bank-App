@@ -1,6 +1,6 @@
 import { FlatList, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { useGroupList } from '@/features/payments/api/groupList';
 import ReScrollView from '@/features/shared/ReScrollView';
 import { paymentCategoriesID } from '@/features/payments/helper/paymentCategoriesID';
@@ -14,15 +14,15 @@ const PaymentCategories = () => {
   const navigate = useNavigation();
 
   if (groupList.isLoading) {
-    return <ReText>Loading...</ReText>;
+    return <PashText>Loading...</PashText>;
   }
 
   if (groupList.isError) {
-    return <ReText>Error</ReText>;
+    return <PashText>Error</PashText>;
   }
 
   if (!groupList.data?.data.length) {
-    return <ReText>No data</ReText>;
+    return <PashText>No data</PashText>;
   }
 
   return (
@@ -54,19 +54,19 @@ const PaymentCategories = () => {
               >
                 <View className="flex-row justify-between items-center">
                   <View className="flex-row gap-2 items-center py-2">
-                    <View className="bg-rebankDimGrey w-10 rounded-full aspect-square justify-center items-center">
-                      {paymentCategoriesID[iconIndex].icon(color['--color-rebankPrimary'])}
+                    <View className="bg-pashaDimGrey w-10 rounded-full aspect-square justify-center items-center">
+                      {paymentCategoriesID[iconIndex].icon(color['--color-pashaPrimary'])}
                     </View>
-                    <ReText>{item.descriptionLat}</ReText>
+                    <PashText>{item.descriptionLat}</PashText>
                   </View>
                   <FontAwesome6
                     name="angle-right"
                     size={16}
-                    color={color['--color-rebankPrimary']}
+                    color={color['--color-pashaPrimary']}
                   />
                 </View>
               </TouchableOpacity>
-              {index !== groupList.data?.data.length - 1 && <View className="w-full h-0.5 bg-rebankDimGrey" />}
+              {index !== groupList.data?.data.length - 1 && <View className="w-full h-0.5 bg-pashaDimGrey" />}
             </View>
           );
         }}

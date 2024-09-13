@@ -10,19 +10,19 @@ const DashboardHeader = () => {
 
   return (
     <View
-      className="bg-rebankBgGrey pb-2 border-b-2 border-b-rebankDimGrey"
+      className="bg-pashaBgGrey pb-2 border-b-2 border-b-pashaDimGrey"
       style={{ paddingTop: statusBarHeight }}
     >
       <View className="flex-row justify-between items-center h-12 px-4">
         <View />
         <View className="flex-row gap-4">
           <Ionicons
-            color={color['--color-rebankPrimary']}
+            color={color['--color-pashaPrimary']}
             name="qr-code"
             size={20}
           />
           <Ionicons
-            color={color['--color-rebankPrimary']}
+            color={color['--color-pashaPrimary']}
             name="notifications-outline"
             size={20}
           />

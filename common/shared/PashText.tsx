@@ -6,10 +6,10 @@ interface props extends TextProps {
   className?: string;
 }
 
-const ReText = ({ children, className, ...props }: props) => {
+const PashText = ({ children, className, ...props }: props) => {
   return (
     <Text
-      className={`text-rebankPrimary ${className}`}
+      className={`text-pashaPrimary ${className}`}
       {...props}
     >
       {children}
@@ -17,4 +17,4 @@ const ReText = ({ children, className, ...props }: props) => {
   );
 };
 
-export default ReText;
+export default PashText;

@@ -7,11 +7,11 @@ import Input from '@/common/shared/Input';
 import { useForm } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Account, usePaymentAccountList } from '@/features/payments/api/accountsList';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { Currency, getMoneyAmount } from '@/features/accounts/helper/money';
 import { getImage } from '@/features/accounts/helper/helper';
 import { paymentCategoriesID } from '@/features/payments/helper/paymentCategoriesID';
-import ReButton from '@/common/shared/ReButton';
+import PashButton from '@/common/shared/PashButton';
 
 interface Inputs {
   amount: number;
@@ -20,7 +20,7 @@ interface Inputs {
 
 export const Card = ({ CurrentCard }: { CurrentCard?: Account }) => {
   return (
-    <View className="bg-rebankBgGrey rounded-3xl">
+    <View className="bg-pashaBgGrey rounded-3xl">
       <Image
         source={getImage(CurrentCard?.accountType!)}
         className="h-full w-full absolute top-0 rounded-3xl"
@@ -81,23 +81,23 @@ const PaymentPay = () => {
   ]);
 
   if (rawAccounts.isLoading) {
-    return <ReText>Loading...</ReText>;
+    return <PashText>Loading...</PashText>;
   }
 
   if (rawAccounts.isError) {
-    return <ReText>Error</ReText>;
+    return <PashText>Error</PashText>;
   }
 
   if (!rawAccounts.data?.data.length) {
-    return <ReText>No data</ReText>;
+    return <PashText>No data</PashText>;
   }
 
   watch(['amount']);
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View className="p-4 gap-4 bg-rebankBackground h-screen">
-          <ReText>From Account</ReText>
+        <View className="p-4 gap-4 bg-pashaBackground h-screen">
+          <PashText>From Account</PashText>
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => {
@@ -106,32 +106,32 @@ const PaymentPay = () => {
           >
             <Card CurrentCard={mainCard.id === 0 ? rawAccounts.data?.data[0] : mainCard} />
           </TouchableOpacity>
-          <View className="bg-rebankBgGrey p-4 rounded-2xl gap-4">
+          <View className="bg-pashaBgGrey p-4 rounded-2xl gap-4">
             <View className="flex-row gap-4 py-2 h-20">
-              <View className="h-full aspect-square justify-center items-center bg-rebankDimGrey rounded-full">
-                {paymentCategoriesID[route.params.paymentGroupIconIndex!].icon(color['--color-rebankPrimary'])}
+              <View className="h-full aspect-square justify-center items-center bg-pashaDimGrey rounded-full">
+                {paymentCategoriesID[route.params.paymentGroupIconIndex!].icon(color['--color-pashaPrimary'])}
               </View>
               <View className="justify-around">
-                <ReText
+                <PashText
                   numberOfLines={2}
                   className="font-bold"
                 >
                   {route.params.paymentProductTitle}
-                </ReText>
-                <ReText className="text-sm text-rebankGrey">{route.params.paymentGroupTitle}</ReText>
+                </PashText>
+                <PashText className="text-sm text-pashaGrey">{route.params.paymentGroupTitle}</PashText>
               </View>
             </View>
             <View className="gap-4">
               <View>
-                <ReText className="text-sm opacity-70">Customer Info:</ReText>
-                <ReText className="text-sm">{route.params.paymentProductCustomer}</ReText>
+                <PashText className="text-sm opacity-70">Customer Info:</PashText>
+                <PashText className="text-sm">{route.params.paymentProductCustomer}</PashText>
               </View>
               <View>
-                <ReText className="text-sm opacity-70">Identifier:</ReText>
-                <ReText className="text-sm">{route.params.paymentIdentifier}</ReText>
+                <PashText className="text-sm opacity-70">Identifier:</PashText>
+                <PashText className="text-sm">{route.params.paymentIdentifier}</PashText>
               </View>
               <View>
-                <ReText className="text-sm opacity-70">Debt:</ReText>
+                <PashText className="text-sm opacity-70">Debt:</PashText>
                 <Text
                   className="text-sm"
                   style={{ color: route.params.paymentProductDebt! > 0 ? '#F54F4F' : '#3ABE70' }}
@@ -145,7 +145,7 @@ const PaymentPay = () => {
                 keyboardType="numeric"
                 placeholder="Amount"
               />
-              <ReButton
+              <PashButton
                 name="Pay"
                 disabled={
                   !getValues('amount') ||
@@ -154,8 +154,8 @@ const PaymentPay = () => {
                       ? rawAccounts.data?.data[0].availableBalanceEquivalent
                       : mainCard.availableBalance)
                 }
-                className="bg-rebankPrimary"
-                textColor={color['--color-rebankBackground']}
+                className="bg-pashaPrimary"
+                textColor={color['--color-pashaBackground']}
                 onPress={() => {
                   navigate.navigate({ name: 'Payment Success' } as never);
                 }}

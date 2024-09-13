@@ -1,5 +1,5 @@
 import { View, TouchableOpacity, Switch } from 'react-native';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import ReScrollView from '@/features/shared/ReScrollView';
 import { FontAwesome6 } from '@expo/vector-icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -82,8 +82,8 @@ enum Theme {
 }
 
 export default function TabThreeScreen() {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const { setColorScheme } = useColorScheme();
+  const { setColorScheme, colorScheme } = useColorScheme();
+  const [isEnabled, setIsEnabled] = useState(colorScheme === 'dark');
   const { signOut } = useSession();
   const color = ColorPick();
   // const navigate = useNavigation();
@@ -111,23 +111,23 @@ export default function TabThreeScreen() {
           >
             <View className="flex-row justify-between items-center">
               <View className="flex-row gap-2 items-center pb-2">
-                <View className="bg-rebankDimGrey w-10 rounded-full aspect-square justify-center items-center">
-                  {o.icon(color['--color-rebankPrimary'])}
+                <View className="bg-pashaDimGrey w-10 rounded-full aspect-square justify-center items-center">
+                  {o.icon(color['--color-pashaPrimary'])}
                 </View>
-                <ReText className={`${o.signOut && 'text-red-600'}`}>{o.title}</ReText>
+                <PashText className={`${o.signOut && 'text-red-600'}`}>{o.title}</PashText>
               </View>
               <FontAwesome6
                 name="angle-right"
                 size={16}
-                color={o.signOut ? 'red' : color['--color-rebankPrimary']}
+                color={o.signOut ? 'red' : color['--color-pashaPrimary']}
               />
             </View>
           </TouchableOpacity>
-          {!o.signOut && <View className="w-full h-0.5 bg-rebankDimGrey" />}
+          {!o.signOut && <View className="w-full h-0.5 bg-pashaDimGrey" />}
         </View>
       ))}
-      <View className="gap-2 flex-row items-center justify-between mt-4 rounded-lg bg-rebankBgGrey px-2 h-14">
-        <ReText className="font-semibold">Change Theme</ReText>
+      <View className="gap-2 flex-row items-center justify-between mt-4 rounded-lg bg-pashaBgGrey px-2 h-14">
+        <PashText className="font-semibold">Change Theme</PashText>
         <Switch
           trackColor={{ false: '#000000', true: '#f4f3f4' }}
           thumbColor={isEnabled ? '#000000' : '#f4f3f4'}

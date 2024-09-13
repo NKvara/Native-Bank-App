@@ -600,7 +600,7 @@
       "pick_up": "მივაკითხავ ბარათს",
       "branches": "ფილიალები"
     },
-    "rebank_loan": {
+    "pasha_loan": {
       "loan_amount": "სესხის მოცულობა",
       "min_term": "{{month}} თვე",
       "max_term": "{{month}} თვე",
@@ -609,7 +609,7 @@
       "choose_date": "აირჩიე თარიღი",
       "order_button": "მოითხოვე"
     },
-    "rebank_loan_order_modal": {
+    "pasha_loan_order_modal": {
       "title": "რე|ბანკის სესხის მოთხოვნა",
       "existing_card": "არსებულ ანგარიშზე თანხის დასმა",
       "new_card": "ახალ ანგარიშზე თანხის დასმა",
@@ -717,7 +717,7 @@
   "auth": {
     "address": "სს „პაშა ბანკი საქართველო“, ს/კ 404433671, ი.ჭავჭავაძის გამზ. 37მ, 0179, თბილისი, საქართველო",
     "terms": "კონფიდენციალურობის პოლიტიკა",
-    "terms_link": "https://rebank.ge/legal",
+    "terms_link": "https://pasha.ge/legal",
     "register": {
       "agreement": "პირდაპირი მარკეტინგის თანხმობა",
       "register": "რეგისტრაცია",

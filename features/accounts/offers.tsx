@@ -1,6 +1,6 @@
 import { FlatList, Image, View } from 'react-native';
 import React from 'react';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { useOfferList } from '@/features/accounts/api/offerList';
 
 const AccountOffers = () => {
@@ -9,7 +9,7 @@ const AccountOffers = () => {
   if (offerList.isLoading) {
     return (
       <View>
-        <View className="font-bold text-lg pl-4 h-4 w-16 rounded-md bg-rebankBgGrey" />
+        <View className="font-bold text-lg pl-4 h-4 w-16 rounded-md bg-pashaBgGrey" />
         <FlatList
           horizontal
           scrollEnabled={false}
@@ -19,12 +19,12 @@ const AccountOffers = () => {
           renderItem={(item) => (
             <View
               key={item.index}
-              className="flex-row w-80 h-28 rounded-xl bg-rebankDimGrey mx-3"
+              className="flex-row w-80 h-28 rounded-xl bg-pashaDimGrey mx-3"
             >
-              <View className="w-24 h-full rounded-md bg-rebankBgGrey" />
+              <View className="w-24 h-full rounded-md bg-pashaBgGrey" />
               <View className="w-2/3 p-4 gap-2">
-                <View className="w-12 h-2 bg-rebankBgGrey rounded-sm" />
-                <View className="w-24 h-4 bg-rebankBgGrey rounded-md" />
+                <View className="w-12 h-2 bg-pashaBgGrey rounded-sm" />
+                <View className="w-24 h-4 bg-pashaBgGrey rounded-md" />
               </View>
             </View>
           )}
@@ -35,35 +35,35 @@ const AccountOffers = () => {
   }
 
   if (offerList.isError) {
-    return <ReText>Error</ReText>;
+    return <PashText>Error</PashText>;
   }
 
   if (!offerList.data?.data.length) {
-    return <ReText>No data</ReText>;
+    return <PashText>No data</PashText>;
   }
 
   return (
     <View>
-      <ReText className="font-bold text-lg pl-4">Offers</ReText>
+      <PashText className="font-bold text-lg pl-4">Offers</PashText>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
         className="mx-[-10px] pt-2"
         data={offerList.data?.data}
         renderItem={({ item }) => (
-          <View className="flex-row w-80 h-28 rounded-xl bg-rebankBgGrey mx-3">
+          <View className="flex-row w-80 h-28 rounded-xl bg-pashaBgGrey mx-3">
             <Image
               className="w-1/3 h-full object-contain rounded-l-xl"
               source={{ uri: item.imageSmall }}
             />
             <View className="w-2/3 p-4 gap-2">
-              <ReText
+              <PashText
                 className="font-bold"
                 numberOfLines={2}
               >
                 {item.title}
-              </ReText>
-              <ReText numberOfLines={2}>{item.text}</ReText>
+              </PashText>
+              <PashText numberOfLines={2}>{item.text}</PashText>
             </View>
           </View>
         )}

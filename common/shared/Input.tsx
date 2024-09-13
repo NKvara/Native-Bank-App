@@ -29,12 +29,12 @@ const Input = ({ control, name, endAdornment, startAdornment, ...props }: Props)
           className="pr-4"
           name={startAdornment}
           size={20}
-          color={color['--color-rebankPrimary']}
+          color={color['--color-pashaPrimary']}
         />
       )}
       <TextInput
-        className="text-rebankPrimary h-full flex-1"
-        placeholderTextColor={color['--color-rebankGrey']}
+        className="text-pashaPrimary h-full flex-1"
+        placeholderTextColor={color['--color-pashaGrey']}
         textAlignVertical="center"
         autoCapitalize="none"
         autoCorrect={false}
@@ -54,7 +54,7 @@ const Input = ({ control, name, endAdornment, startAdornment, ...props }: Props)
             className="pl-4"
             name={endAdornment.icon}
             size={20}
-            color={color['--color-rebankPrimary']}
+            color={color['--color-pashaPrimary']}
           />
         </TouchableHighlight>
       )}

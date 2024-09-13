@@ -599,7 +599,7 @@
       "pick_up": "Pick up",
       "branches": "Branches"
     },
-    "rebank_loan": {
+    "pasha_loan": {
       "loan_amount": "Loan amount",
       "min_term": "{{month}} months",
       "max_term": "{{month}} months",
@@ -608,7 +608,7 @@
       "choose_date": "Choose date",
       "order_button": "Order"
     },
-    "rebank_loan_order_modal": {
+    "pasha_loan_order_modal": {
       "title": "Demand Re|Bank loan",
       "existing_card": "Allow loan amount on the existing account",
       "new_card": "Allow loan amount on the new account",
@@ -716,7 +716,7 @@
   "auth": {
     "address": "„PASHA Bank Georgia“ JSC, ID 404433671, I.Chavchavadze Avenue 37M, 0179, Tbilisi, Georgia",
     "terms": "Privacy Policy",
-    "terms_link": "https://rebank.ge/en/legal",
+    "terms_link": "https://pasha.ge/en/legal",
     "register": {
       "agreement": "Direct Marketing Consent",
       "register": "Register",

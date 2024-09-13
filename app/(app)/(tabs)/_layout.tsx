@@ -1,7 +1,7 @@
 import React from 'react';
 import { ColorPick } from '@/color-theme';
 import { View } from 'react-native';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -22,19 +22,19 @@ export default function TabLayout() {
         header: (props) => {
           return (
             <View
-              className="bg-rebankBgGrey pb-2 border-b-2 border-b-rebankDimGrey"
+              className="bg-pashaBgGrey pb-2 border-b-2 border-b-pashaDimGrey"
               style={{ paddingTop: statusBarHeight }}
             >
               <View className="flex-row justify-between items-center h-12 px-4">
-                <ReText className="font-bold capitalize text-lg">{props.route.name}</ReText>
+                <PashText className="font-bold capitalize text-lg">{props.route.name}</PashText>
                 <View className="flex-row gap-4">
                   <Ionicons
-                    color={ColorPicker['--color-rebankPrimary']}
+                    color={ColorPicker['--color-pashaPrimary']}
                     name="qr-code"
                     size={20}
                   />
                   <Ionicons
-                    color={ColorPicker['--color-rebankPrimary']}
+                    color={ColorPicker['--color-pashaPrimary']}
                     name="notifications-outline"
                     size={20}
                   />
@@ -57,7 +57,7 @@ export default function TabLayout() {
           backgroundColor: ColorPicker['--color-inputBackground'],
         },
         tabBarShowLabel: false,
-        tabBarActiveTintColor: ColorPicker['--color-rebankPrimary'],
+        tabBarActiveTintColor: ColorPicker['--color-pashaPrimary'],
         tabBarItemStyle: {
           height: 52,
         },

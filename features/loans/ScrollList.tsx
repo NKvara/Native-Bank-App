@@ -1,4 +1,4 @@
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { useLoanList } from '@/features/loans/api/loanList';
 import { View, FlatList } from 'react-native';
 import { ColorPick } from '@/color-theme';
@@ -17,16 +17,16 @@ const ScrollList = () => {
           ItemSeparatorComponent={() => <View className="h-6" />}
           data={Array.from({ length: 4 })}
           renderItem={() => (
-            <View className="bg-rebankBgGrey rounded-2xl border border-rebankDimGrey p-2 gap-4">
+            <View className="bg-pashaBgGrey rounded-2xl border border-pashaDimGrey p-2 gap-4">
               <View className="mb-2">
-                <View className="w-12 h-2 bg-rebankBgGrey rounded-sm" />
+                <View className="w-12 h-2 bg-pashaBgGrey rounded-sm" />
               </View>
-              <View className="bg-rebankDimGrey h-4 flex-row rounded-full">
-                <View className="w-full h-2 bg-rebankDimGrey rounded-sm" />
+              <View className="bg-pashaDimGrey h-4 flex-row rounded-full">
+                <View className="w-full h-2 bg-pashaDimGrey rounded-sm" />
               </View>
               <View className="flex-row">
                 <View>
-                  <View className="w-12 h-2 bg-rebankDimGrey rounded-sm" />
+                  <View className="w-12 h-2 bg-pashaDimGrey rounded-sm" />
                 </View>
               </View>
             </View>
@@ -37,7 +37,7 @@ const ScrollList = () => {
   }
 
   if (loans.isError) {
-    return <ReText>Error</ReText>;
+    return <PashText>Error</PashText>;
   }
 
   return (
@@ -47,15 +47,15 @@ const ScrollList = () => {
         ItemSeparatorComponent={() => <View className="h-6" />}
         data={loans.data?.data}
         renderItem={({ item }) => (
-          <View className="bg-rebankBgGrey rounded-2xl border border-rebankDimGrey p-2 gap-4">
+          <View className="bg-pashaBgGrey rounded-2xl border border-pashaDimGrey p-2 gap-4">
             <View className="mb-2">
-              <ReText numberOfLines={2}>{item.productName}</ReText>
+              <PashText numberOfLines={2}>{item.productName}</PashText>
             </View>
-            <View className="bg-rebankDimGrey h-4 flex-row rounded-full">
+            <View className="bg-pashaDimGrey h-4 flex-row rounded-full">
               <LinearGradient
                 // Background Linear Gradient
                 start={{ x: 0.2, y: 0.4 }}
-                colors={[color['--color-rebankBrightPurple'], color['--color-rebankPurple']]}
+                colors={[color['--color-pashaBrightPurple'], color['--color-pashaPurple']]}
                 style={{
                   width: `${100 - (item.remainingAmount_Equialent / item.initAmount_Equialent) * 100}%`,
                   borderRadius: 100,
@@ -64,11 +64,11 @@ const ScrollList = () => {
             </View>
             <View className="flex-row">
               <View>
-                <ReText className="font-bold">
+                <PashText className="font-bold">
                   {Math.abs(item.remainingAmount_Equialent - item.initAmount_Equialent)}
-                  {GetCurrencyEnum[item.ccy]} <ReText className="font-medium">of</ReText> {item.initAmount_Equialent}
+                  {GetCurrencyEnum[item.ccy]} <PashText className="font-medium">of</PashText> {item.initAmount_Equialent}
                   {GetCurrencyEnum[item.ccy]}
-                </ReText>
+                </PashText>
               </View>
             </View>
           </View>

@@ -3,7 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import ReScrollView from '@/features/shared/ReScrollView';
 import { ParamListBase } from '@react-navigation/routers';
 import { RouteProp } from '@/node_modules/@react-navigation/core/src/types';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { useProductList } from '@/features/payments/api/productList';
 import { FlatList, TouchableOpacity, View } from 'react-native';
 import { FontAwesome6 } from '@expo/vector-icons';
@@ -30,20 +30,20 @@ const PaymentProducts = () => {
   const navigate = useNavigation();
 
   if (productList.isLoading) {
-    return <ReText>Loading...</ReText>;
+    return <PashText>Loading...</PashText>;
   }
 
   if (productList.isError) {
-    return <ReText>Error</ReText>;
+    return <PashText>Error</PashText>;
   }
 
   if (!productList.data?.data.length) {
-    return <ReText>No data</ReText>;
+    return <PashText>No data</PashText>;
   }
 
   return (
     <ReScrollView>
-      <ReText className="font-bold text-lg">{route.params.paymentGroupTitle}</ReText>
+      <PashText className="font-bold text-lg">{route.params.paymentGroupTitle}</PashText>
       <FlatList
         scrollEnabled={false}
         data={productList.data.data}
@@ -65,15 +65,15 @@ const PaymentProducts = () => {
               }}
             >
               <View className="flex-row justify-between items-center py-4">
-                <ReText>{item.nameLat}</ReText>
+                <PashText>{item.nameLat}</PashText>
                 <FontAwesome6
                   name="angle-right"
                   size={16}
-                  color={color['--color-rebankPrimary']}
+                  color={color['--color-pashaPrimary']}
                 />
               </View>
             </TouchableOpacity>
-            {index !== productList.data?.data.length - 1 && <View className="w-full h-0.5 bg-rebankDimGrey" />}
+            {index !== productList.data?.data.length - 1 && <View className="w-full h-0.5 bg-pashaDimGrey" />}
           </View>
         )}
       />

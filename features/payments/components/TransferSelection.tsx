@@ -1,5 +1,5 @@
 import React from 'react';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import ReScrollView from '@/features/shared/ReScrollView';
 import { Entypo, FontAwesome6, MaterialCommunityIcons } from '@expo/vector-icons';
 import { View } from 'react-native';
@@ -61,8 +61,8 @@ const TransferSelection = () => {
 
   return (
     <ReScrollView>
-      <View className="gap-4 bg-rebankBgGrey p-4 rounded-xl">
-        <ReText className="font-bold text-lg">Categories</ReText>
+      <View className="gap-4 bg-pashaBgGrey p-4 rounded-xl">
+        <PashText className="font-bold text-lg">Categories</PashText>
         <View className="flex-row">
           {LinkList.map((item, index) => (
             <View
@@ -73,10 +73,10 @@ const TransferSelection = () => {
                 onPress={() => navigate.navigate(item.link as never)}
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4 }}
               >
-                <View className="bg-rebankDimGrey justify-center items-center p-4 rounded-full aspect-square h-16">
-                  {item.icon(color['--color-rebankPrimary'])}
+                <View className="bg-pashaDimGrey justify-center items-center p-4 rounded-full aspect-square h-16">
+                  {item.icon(color['--color-pashaPrimary'])}
                 </View>
-                <ReText className="text-sm text-center h-10">{item.name}</ReText>
+                <PashText className="text-sm text-center h-10">{item.name}</PashText>
               </TouchableOpacity>
             </View>
           ))}

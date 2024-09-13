@@ -4,7 +4,7 @@ import ReScrollView from '@/features/shared/ReScrollView';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { paymentRouteType } from '@/features/payments/components/payment/PaymentProducts';
 import { usePaymentAccountList } from '@/features/payments/api/accountsList';
-import ReText from '@/common/shared/ReText';
+import PashText from '@/common/shared/PashText';
 import { Card } from '@/features/payments/components/payment/PaymentPay';
 
 const PaymentAccounts = () => {
@@ -14,20 +14,20 @@ const PaymentAccounts = () => {
   const rawAccounts = usePaymentAccountList();
 
   if (rawAccounts.isLoading) {
-    return <ReText>Loading...</ReText>;
+    return <PashText>Loading...</PashText>;
   }
 
   if (rawAccounts.isError) {
-    return <ReText>Error</ReText>;
+    return <PashText>Error</PashText>;
   }
 
   if (!rawAccounts.data?.data.length) {
-    return <ReText>No data</ReText>;
+    return <PashText>No data</PashText>;
   }
 
   return (
     <ReScrollView scroll={false}>
-      <ReText>From Account</ReText>
+      <PashText>From Account</PashText>
       <FlatList
         data={rawAccounts.data.data}
         renderItem={({ item }) => (
