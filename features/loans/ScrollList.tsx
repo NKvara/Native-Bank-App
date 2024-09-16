@@ -2,16 +2,24 @@ import PashText from '@/common/shared/PashText';
 import { useLoanList } from '@/features/loans/api/loanList';
 import { View, FlatList } from 'react-native';
 import { ColorPick } from '@/color-theme';
-import { GetCurrencyEnum } from '@/features/accounts/helper/money';
+import { GetCurrencyEnum, Currency, getMoneyAmount } from '@/features/accounts/helper/money';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const ScrollList = () => {
   const loans = useLoanList();
   const color = ColorPick();
+  const totalData = loans.data?.data.reduce(
+    (acc, curr) => acc + (curr.remainingAmount_Equialent - curr.initAmount_Equialent),
+    0
+  );
 
   if (loans.isLoading) {
     return (
-      <View>
+      <View className='gap-4'>
+        <View className="items-center gap-2">
+          <View className="h-4 w-32 bg-pashaDimGrey rounded-xl" />
+          <View className="h-8 w-60 bg-pashaDimGrey rounded-xl" />
+        </View>
         <FlatList
           scrollEnabled={false}
           ItemSeparatorComponent={() => <View className="h-6" />}
@@ -41,7 +49,13 @@ const ScrollList = () => {
   }
 
   return (
-    <View>
+    <View className='gap-4'>
+      <View>
+        <PashText className="opacity-70 text-center">Total Balance</PashText>
+        <PashText className="font-bold text-4xl text-center">
+          {getMoneyAmount(Math.abs(totalData!), '-', Currency.GEL)}
+        </PashText>
+      </View>
       <FlatList
         scrollEnabled={false}
         ItemSeparatorComponent={() => <View className="h-6" />}
@@ -66,7 +80,8 @@ const ScrollList = () => {
               <View>
                 <PashText className="font-bold">
                   {Math.abs(item.remainingAmount_Equialent - item.initAmount_Equialent)}
-                  {GetCurrencyEnum[item.ccy]} <PashText className="font-medium">of</PashText> {item.initAmount_Equialent}
+                  {GetCurrencyEnum[item.ccy]} <PashText className="font-medium">of</PashText>{' '}
+                  {item.initAmount_Equialent}
                   {GetCurrencyEnum[item.ccy]}
                 </PashText>
               </View>
