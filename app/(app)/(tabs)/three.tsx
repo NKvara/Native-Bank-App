@@ -1,6 +1,6 @@
 import { View, TouchableOpacity, Switch } from 'react-native';
 import PashText from '@/common/shared/PashText';
-import ReScrollView from '@/features/shared/ReScrollView';
+import PashScrollView from '@/features/shared/PashScrollView';
 import { FontAwesome6 } from '@expo/vector-icons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { ColorPick } from '@/color-theme';
@@ -97,7 +97,7 @@ export default function TabThreeScreen() {
   }, [isEnabled, setColorScheme]);
 
   return (
-    <ReScrollView>
+    <PashScrollView>
       {Settings.map((o) => (
         <View key={o.id}>
           <TouchableOpacity
@@ -136,6 +136,6 @@ export default function TabThreeScreen() {
           value={isEnabled}
         />
       </View>
-    </ReScrollView>
+    </PashScrollView>
   );
 }

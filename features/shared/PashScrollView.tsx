@@ -1,7 +1,7 @@
 import { View, ScrollView } from 'react-native';
 import React from 'react';
 
-const ReScrollView = ({ children, scroll = true }: { children: React.ReactNode; scroll?: boolean }) => {
+const PashScrollView = ({ children, scroll = true }: { children: React.ReactNode; scroll?: boolean }) => {
   if (!scroll) {
     return (
       <View className="bg-pashaBackground h-screen">
@@ -19,4 +19,4 @@ const ReScrollView = ({ children, scroll = true }: { children: React.ReactNode; 
   );
 };
 
-export default ReScrollView;
+export default PashScrollView;

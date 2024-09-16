@@ -43,7 +43,7 @@ const LoginBody = () => {
         control={control}
         id="password"
         placeholder="Password"
-        secuPashTextEntry={!getValues('passwordVisible')}
+        secureTextEntry={!getValues('passwordVisible')}
         startAdornment="lock-closed-outline"
         keyboardType="default"
         editable={!getValues('otpSessionId')}

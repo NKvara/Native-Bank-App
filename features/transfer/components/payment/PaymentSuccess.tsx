@@ -1,7 +1,7 @@
 import { ColorPick } from '@/color-theme';
 import PashButton from '@/common/shared/PashButton';
 import PashText from '@/common/shared/PashText';
-import ReScrollView from '@/features/shared/ReScrollView';
+import PashScrollView from '@/features/shared/PashScrollView';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
@@ -11,7 +11,7 @@ const PaymentSuccess = () => {
   const navigate = useNavigation();
 
   return (
-    <ReScrollView scroll={false}>
+    <PashScrollView scroll={false}>
       <View className="mt-56 items-center gap-4">
         <View className="bg-pashaBgGrey p-6 rounded-full">
           <FontAwesome5
@@ -31,7 +31,7 @@ const PaymentSuccess = () => {
           }}
         />
       </View>
-    </ReScrollView>
+    </PashScrollView>
   );
 };
 

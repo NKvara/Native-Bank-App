@@ -1,11 +1,11 @@
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
-import ReScrollView from '@/features/shared/ReScrollView';
+import PashScrollView from '@/features/shared/PashScrollView';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { paymentRouteType } from '@/features/payments/components/payment/PaymentProducts';
-import { usePaymentAccountList } from '@/features/payments/api/accountsList';
 import PashText from '@/common/shared/PashText';
-import { Card } from '@/features/payments/components/payment/PaymentPay';
+import { paymentRouteType } from '@/features/transfer/components/payment/PaymentProducts';
+import { usePaymentAccountList } from '@/features/transfer/api/accountsList';
+import { Card } from '@/features/transfer/components/payment/PaymentPay';
 
 const PaymentAccounts = () => {
   const navigate = useNavigation();
@@ -26,7 +26,7 @@ const PaymentAccounts = () => {
   }
 
   return (
-    <ReScrollView scroll={false}>
+    <PashScrollView scroll={false}>
       <PashText>From Account</PashText>
       <FlatList
         data={rawAccounts.data.data}
@@ -45,7 +45,7 @@ const PaymentAccounts = () => {
         )}
         ItemSeparatorComponent={() => <View className="h-4" />}
       />
-    </ReScrollView>
+    </PashScrollView>
   );
 };
 

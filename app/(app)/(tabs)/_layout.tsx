@@ -1,48 +1,22 @@
 import React from 'react';
 import { ColorPick } from '@/color-theme';
 import { View } from 'react-native';
-import PashText from '@/common/shared/PashText';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import Constants from 'expo-constants';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import DashboardScreen from '@/app/(app)/(tabs)/(dashboard)';
 import TabThreeScreen from '@/app/(app)/(tabs)/three';
 import TransferLayout from '@/app/(app)/(tabs)/(transfers)/_layout';
+import Header from '@/features/shared/header';
 
 // const DashboardStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function TabLayout() {
   const ColorPicker = ColorPick();
-  const statusBarHeight = Constants.statusBarHeight;
 
   return (
     <Tab.Navigator
       screenOptions={{
-        header: (props) => {
-          return (
-            <View
-              className="bg-pashaBgGrey pb-2 border-b-2 border-b-pashaDimGrey"
-              style={{ paddingTop: statusBarHeight }}
-            >
-              <View className="flex-row justify-between items-center h-12 px-4">
-                <PashText className="font-bold capitalize text-lg">{props.route.name}</PashText>
-                <View className="flex-row gap-4">
-                  <Ionicons
-                    color={ColorPicker['--color-pashaPrimary']}
-                    name="qr-code"
-                    size={20}
-                  />
-                  <Ionicons
-                    color={ColorPicker['--color-pashaPrimary']}
-                    name="notifications-outline"
-                    size={20}
-                  />
-                </View>
-              </View>
-            </View>
-          );
-        },
         tabBarStyle: {
           display: 'flex',
           alignItems: 'center',
@@ -60,6 +34,28 @@ export default function TabLayout() {
         tabBarActiveTintColor: ColorPicker['--color-pashaPrimary'],
         tabBarItemStyle: {
           height: 52,
+        },
+        header: (props) => {
+          return (
+            <Header
+              title={props.route.name}
+              goBack={false}
+              endAdornment={
+                <View className="flex-row gap-4">
+                  <Ionicons
+                    color={ColorPicker['--color-pashaPrimary']}
+                    name="qr-code"
+                    size={20}
+                  />
+                  <Ionicons
+                    color={ColorPicker['--color-pashaPrimary']}
+                    name="notifications-outline"
+                    size={20}
+                  />
+                </View>
+              }
+            />
+          );
         },
       }}
     >

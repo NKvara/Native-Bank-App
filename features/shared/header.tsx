@@ -1,12 +1,23 @@
-import { View } from 'react-native';
-import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity, View } from 'react-native';
+import React, { ReactNode } from 'react';
+import { Entypo } from '@expo/vector-icons';
 import { ColorPick } from '@/color-theme';
 import Constants from 'expo-constants';
+import PashText from '@/common/shared/PashText';
+import { useNavigation } from '@react-navigation/native';
 
-const DashboardHeader = () => {
+const Header = ({
+  title,
+  goBack = true,
+  endAdornment,
+}: {
+  title: string;
+  goBack?: boolean;
+  endAdornment?: ReactNode;
+}) => {
   const color = ColorPick();
   const statusBarHeight = Constants.statusBarHeight;
+  const navigate = useNavigation();
 
   return (
     <View
@@ -14,22 +25,24 @@ const DashboardHeader = () => {
       style={{ paddingTop: statusBarHeight }}
     >
       <View className="flex-row justify-between items-center h-12 px-4">
-        <View />
-        <View className="flex-row gap-4">
-          <Ionicons
-            color={color['--color-pashaPrimary']}
-            name="qr-code"
-            size={20}
-          />
-          <Ionicons
-            color={color['--color-pashaPrimary']}
-            name="notifications-outline"
-            size={20}
-          />
+        <View>
+          {goBack && (
+            <TouchableOpacity onPress={() => navigate.goBack}>
+              <View className="bg-pashaBgGrey rounded-full justify-center items-center">
+                <Entypo
+                  name="chevron-left"
+                  size={24}
+                  color={color['--color-pashaPrimary']}
+                />
+              </View>
+            </TouchableOpacity>
+          )}
+          <PashText className="font-bold capitalize text-lg">{title}</PashText>
         </View>
+        {endAdornment ? <View>{endAdornment}</View> : <View />}
       </View>
     </View>
   );
 };
 
-export default DashboardHeader;
+export default Header;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import TransferSelection from '@/features/payments/components/TransferSelection';
+import TransferSelection from '@/features/transfer/components/TransferSelection';
 import Unfinished from '@/app/(app)/(tabs)/(transfers)/unfinished';
 import PaymentLayout from '@/app/(app)/(tabs)/(transfers)/(PaymentList)/_layout';
 

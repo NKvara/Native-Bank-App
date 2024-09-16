@@ -1,5 +1,5 @@
 import React from 'react';
-import ReScrollView from '@/features/shared/ReScrollView';
+import PashScrollView from '@/features/shared/PashScrollView';
 import { TouchableWithoutFeedback, View } from 'react-native';
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import PashText from '@/common/shared/PashText';
@@ -11,7 +11,7 @@ const PaymentTemplates = () => {
   const navigate = useNavigation();
 
   return (
-    <ReScrollView scroll={false}>
+    <PashScrollView scroll={false}>
       <View className="flex-row items-center justify-between">
         <PashText className="font-bold text-xl">Templates</PashText>
         <TouchableWithoutFeedback onPress={() => navigate.navigate("Payment Categories" as never)}>
@@ -33,7 +33,7 @@ const PaymentTemplates = () => {
         <PashText className="font-bold text-lg">You don't have any templates yet</PashText>
         <PashText className="">Click "+" to add your first payment</PashText>
       </View>
-    </ReScrollView>
+    </PashScrollView>
   );
 };
 

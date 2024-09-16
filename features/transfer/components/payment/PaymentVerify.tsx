@@ -1,14 +1,14 @@
 import { View, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, Text } from 'react-native';
 import React from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { paymentRouteType } from '@/features/payments/components/payment/PaymentProducts';
+import { paymentRouteType } from '@/features/transfer/components/payment/PaymentProducts';
 import PashText from '@/common/shared/PashText';
-import { paymentCategoriesID } from '@/features/payments/helper/paymentCategoriesID';
+import { paymentCategoriesID } from '@/features/transfer/helper/paymentCategoriesID';
 import { ColorPick } from '@/color-theme';
 import Input from '@/common/shared/Input';
 import { useForm } from 'react-hook-form';
 import PashButton from '@/common/shared/PashButton';
-import { useDebtVerify } from '@/features/payments/api/debtVerify';
+import { useDebtVerify } from '@/features/transfer/api/debtVerify';
 import { useSession } from '@/context/ctx';
 import { getMoneyAmount, Currency } from '@/features/accounts/helper/money';
 

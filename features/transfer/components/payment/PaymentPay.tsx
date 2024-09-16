@@ -1,16 +1,16 @@
 import { KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, View, Image, Text } from 'react-native';
 import { useState, useEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { paymentRouteType } from '@/features/payments/components/payment/PaymentProducts';
+import { paymentRouteType } from '@/features/transfer/components/payment/PaymentProducts';
 import { ColorPick } from '@/color-theme';
 import Input from '@/common/shared/Input';
 import { useForm } from 'react-hook-form';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Account, usePaymentAccountList } from '@/features/payments/api/accountsList';
+import { Account, usePaymentAccountList } from '@/features/transfer/api/accountsList';
 import PashText from '@/common/shared/PashText';
 import { Currency, getMoneyAmount } from '@/features/accounts/helper/money';
 import { getImage } from '@/features/accounts/helper/helper';
-import { paymentCategoriesID } from '@/features/payments/helper/paymentCategoriesID';
+import { paymentCategoriesID } from '@/features/transfer/helper/paymentCategoriesID';
 import PashButton from '@/common/shared/PashButton';
 
 interface Inputs {
@@ -80,18 +80,6 @@ const PaymentPay = () => {
     route.params.paymentGroupId,
   ]);
 
-  if (rawAccounts.isLoading) {
-    return <PashText>Loading...</PashText>;
-  }
-
-  if (rawAccounts.isError) {
-    return <PashText>Error</PashText>;
-  }
-
-  if (!rawAccounts.data?.data.length) {
-    return <PashText>No data</PashText>;
-  }
-
   watch(['amount']);
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -104,7 +92,11 @@ const PaymentPay = () => {
               navigate.navigate({ name: 'Payment Accounts', params: { ...route.params }, merge: true } as never);
             }}
           >
-            <Card CurrentCard={mainCard.id === 0 ? rawAccounts.data?.data[0] : mainCard} />
+            {rawAccounts.isLoading ? (
+              <View className="h-20 w-full bg-pashaBgGrey rounded-xl" />
+            ) : (
+              <Card CurrentCard={mainCard.id === 0 ? rawAccounts.data?.data[0] : mainCard} />
+            )}
           </TouchableOpacity>
           <View className="bg-pashaBgGrey p-4 rounded-2xl gap-4">
             <View className="flex-row gap-4 py-2 h-20">
@@ -147,11 +139,12 @@ const PaymentPay = () => {
               />
               <PashButton
                 name="Pay"
+                isLoading={rawAccounts.isLoading}
                 disabled={
                   !getValues('amount') ||
                   getValues('amount') >
                     (mainCard.id === 0
-                      ? rawAccounts.data?.data[0].availableBalanceEquivalent
+                      ? rawAccounts.data!.data[0].availableBalanceEquivalent
                       : mainCard.availableBalance)
                 }
                 className="bg-pashaPrimary"

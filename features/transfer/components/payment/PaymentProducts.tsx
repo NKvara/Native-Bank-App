@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import ReScrollView from '@/features/shared/ReScrollView';
+import PashScrollView from '@/features/shared/PashScrollView';
 import { ParamListBase } from '@react-navigation/routers';
 import { RouteProp } from '@/node_modules/@react-navigation/core/src/types';
 import PashText from '@/common/shared/PashText';
-import { useProductList } from '@/features/payments/api/productList';
+import { useProductList } from '@/features/transfer/api/productList';
 import { FlatList, TouchableOpacity, View } from 'react-native';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { ColorPick } from '@/color-theme';
@@ -30,7 +30,22 @@ const PaymentProducts = () => {
   const navigate = useNavigation();
 
   if (productList.isLoading) {
-    return <PashText>Loading...</PashText>;
+    return (
+      <PashScrollView scroll={false}>
+        <View className="h-8 w-52 rounded-xl bg-pashaBgGrey" />
+        <FlatList
+          scrollEnabled={false}
+          data={new Array(10).fill({})}
+          renderItem={() => (
+            <View>
+              <View className="flex-row justify-between items-center py-4">
+                <View className="w-full h-8 rounded-xl mb-2 bg-pashaBgGrey" />
+              </View>
+            </View>
+          )}
+        />
+      </PashScrollView>
+    );
   }
 
   if (productList.isError) {
@@ -42,7 +57,7 @@ const PaymentProducts = () => {
   }
 
   return (
-    <ReScrollView>
+    <PashScrollView>
       <PashText className="font-bold text-lg">{route.params.paymentGroupTitle}</PashText>
       <FlatList
         scrollEnabled={false}
@@ -77,7 +92,7 @@ const PaymentProducts = () => {
           </View>
         )}
       />
-    </ReScrollView>
+    </PashScrollView>
   );
 };
 

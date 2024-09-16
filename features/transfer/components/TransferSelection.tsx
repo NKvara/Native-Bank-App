@@ -1,6 +1,6 @@
 import React from 'react';
 import PashText from '@/common/shared/PashText';
-import ReScrollView from '@/features/shared/ReScrollView';
+import PashScrollView from '@/features/shared/PashScrollView';
 import { Entypo, FontAwesome6, MaterialCommunityIcons } from '@expo/vector-icons';
 import { View } from 'react-native';
 import { ColorPick } from '@/color-theme';
@@ -60,7 +60,7 @@ const TransferSelection = () => {
   const navigate = useNavigation();
 
   return (
-    <ReScrollView>
+    <PashScrollView>
       <View className="gap-4 bg-pashaBgGrey p-4 rounded-xl">
         <PashText className="font-bold text-lg">Categories</PashText>
         <View className="flex-row">
@@ -82,7 +82,7 @@ const TransferSelection = () => {
           ))}
         </View>
       </View>
-    </ReScrollView>
+    </PashScrollView>
   );
 };
 

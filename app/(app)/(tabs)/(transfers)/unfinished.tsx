@@ -1,12 +1,12 @@
 import React from 'react';
 import PashText from '@/common/shared/PashText';
-import ReScrollView from '@/features/shared/ReScrollView';
+import PashScrollView from '@/features/shared/PashScrollView';
 
 const Unfinished = () => {
   return (
-    <ReScrollView>
+    <PashScrollView>
       <PashText>Unfinished</PashText>
-    </ReScrollView>
+    </PashScrollView>
   );
 };
 

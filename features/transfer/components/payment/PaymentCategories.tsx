@@ -1,12 +1,12 @@
 import { FlatList, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import PashText from '@/common/shared/PashText';
-import { useGroupList } from '@/features/payments/api/groupList';
-import ReScrollView from '@/features/shared/ReScrollView';
-import { paymentCategoriesID } from '@/features/payments/helper/paymentCategoriesID';
+import PashScrollView from '@/features/shared/PashScrollView';
 import { ColorPick } from '@/color-theme';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useGroupList } from '@/features/transfer/api/groupList';
+import { paymentCategoriesID } from '@/features/transfer/helper/paymentCategoriesID';
 
 const PaymentCategories = () => {
   const groupList = useGroupList();
@@ -14,7 +14,31 @@ const PaymentCategories = () => {
   const navigate = useNavigation();
 
   if (groupList.isLoading) {
-    return <PashText>Loading...</PashText>;
+    return (
+      <PashScrollView scroll={false}>
+        <FlatList
+          scrollEnabled={false}
+          data={[{}, {}, {}, {}, {}, {}]}
+          renderItem={({ index }) => {
+            return (
+              <View>
+                <View className="flex-row justify-between items-center">
+                  <View className="flex-row gap-2 items-center py-2">
+                    <View className="bg-pashaDimGrey w-10 rounded-full aspect-square justify-center items-center" />
+                  </View>
+                  <FontAwesome6
+                    name="angle-right"
+                    size={16}
+                    color={color['--color-pashaPrimary']}
+                  />
+                </View>
+                {index !== 5 && <View className="w-full h-0.5 bg-pashaDimGrey" />}
+              </View>
+            );
+          }}
+        />
+      </PashScrollView>
+    );
   }
 
   if (groupList.isError) {
@@ -26,7 +50,7 @@ const PaymentCategories = () => {
   }
 
   return (
-    <ReScrollView>
+    <PashScrollView>
       <FlatList
         initialNumToRender={50}
         scrollEnabled={false}
@@ -72,7 +96,7 @@ const PaymentCategories = () => {
         }}
         keyExtractor={(item) => item.paymentGroupId.toString()}
       />
-    </ReScrollView>
+    </PashScrollView>
   );
 };
 
